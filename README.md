@@ -33,6 +33,22 @@ Generate a PPTD deck from source content and a PPT/PPTX template. The workflow c
 
 Rebuild a content deck in the visual style of a template deck while preserving the content deck's page count and substantive content. The workflow covers PPTD conversion, template style extraction, content page classification, reflow, validation, export, and visual QA.
 
+### personal/receiving-code-review
+
+Evaluate incoming code review feedback before implementing it. The workflow covers reading feedback, verifying it against the codebase, judging technical fit, responding with evidence, and implementing one item at a time.
+
+### personal/requesting-code-review
+
+Request focused code review before merging or after completing meaningful work. The workflow covers selecting a git range, preparing reviewer context, using the review checklist, and acting on feedback by severity.
+
+### personal/systematic-debugging
+
+Debug technical issues by tracing root cause before fixing symptoms. The workflow covers reproduction, evidence gathering, recent-change review, hypothesis testing, pattern comparison, and defense-in-depth validation.
+
+### personal/test-driven-development
+
+Implement features and bug fixes through red-green-refactor. The workflow covers writing a failing test first, verifying the failure, making the smallest passing change, refactoring safely, and avoiding testing anti-patterns.
+
 ## Attribution
 
 Sources, inspirations, and adaptation history are recorded in `ATTRIBUTION.md`.

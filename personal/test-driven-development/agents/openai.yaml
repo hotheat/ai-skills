@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test-Driven Development"
+  short_description: "Use red-green-refactor for features and bug fixes"
+  default_prompt: "Use $test-driven-development to implement a feature or bug fix with a failing test first."

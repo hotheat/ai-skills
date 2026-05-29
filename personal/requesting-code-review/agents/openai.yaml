@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requesting Code Review"
+  short_description: "Prepare focused code review requests before merging"
+  default_prompt: "Use $requesting-code-review to request a focused review for completed work or a merge candidate."
