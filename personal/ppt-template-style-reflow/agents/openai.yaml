@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT Template Style Reflow"
+  short_description: "Replicate PPT template style and reflow content"
+  default_prompt: "Use $ppt-template-style-reflow to restyle a content PPT with a template PPT while preserving page count and content."

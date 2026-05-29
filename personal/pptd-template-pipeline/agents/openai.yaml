@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPTD Template Pipeline"
+  short_description: "Turn documents or research plus a PPT template into checked PPTD decks"
+  default_prompt: "Use $pptd-template-pipeline to turn an existing document or research notes and an uploaded PPT template into a checked PPTD deck."
