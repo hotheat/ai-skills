@@ -11,6 +11,16 @@
 
 ## Skills
 
+### personal/planner
+
+- 状态: Inspired
+- 启发来源:
+  - [affaan-m/ECC `agents/planner.md`](https://github.com/affaan-m/ECC/blob/main/agents/planner.md)
+- 改写说明:
+  - 基于本地 `/Users/jiaoguo/.codex/skills/planner` skill 加入本仓库。
+  - 保留规划专家、需求分析、架构审查、阶段拆解、测试策略、风险识别和成功标准等核心工作流。
+  - 调整为 Codex skill 目录结构和仓库归属记录。
+
 ### personal/pptd-template-pipeline
 
 - 状态: Inspired

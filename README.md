@@ -21,6 +21,10 @@ ai-skills-owner/
 
 ## Skills
 
+### personal/planner
+
+Create actionable implementation plans for complex features, architecture changes, and refactors. The workflow covers requirements analysis, architecture review, step breakdown, implementation ordering, testing strategy, risks, and success criteria.
+
 ### personal/pptd-template-pipeline
 
 Generate a PPTD deck from source content and a PPT/PPTX template. The workflow covers template inspection, design-system extraction, outline planning, PPTD/page generation, checker repair loops, and final validation.

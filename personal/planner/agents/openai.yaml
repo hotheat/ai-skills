@@ -1,0 +1,4 @@
+interface:
+  display_name: "Planner"
+  short_description: "Create actionable implementation plans for complex engineering work"
+  default_prompt: "Use $planner to create an implementation plan for a complex feature, architecture change, or refactor."
