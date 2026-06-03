@@ -79,3 +79,13 @@
   - 基于本地已整理的 test-driven-development skill 加入本仓库。
   - 保留 red-green-refactor、先写失败测试、最小实现和测试反模式检查流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
+
+### deep-understanding
+
+- 状态: Inspired
+- 启发来源:
+  - [ThariqS - Deep Understanding Prompt](https://gist.github.com/ThariqS/1389dcdff9eba4789887a2211370f06b)
+- 改写说明:
+  - 基于原始 prompt 改写为 Codex skill 格式。
+  - 保留增量式教学验证、理解清单、互动问答（ELI5/ELI14/ELII）和测验等核心流程。
+  - 调整为 Codex skill 目录结构和仓库归属记录。
