@@ -1,0 +1,4 @@
+interface:
+  display_name: "Export Flomo To Obsidian"
+  short_description: "将 Flomo 导出包转换为按日期分目录的 Obsidian 笔记"
+  default_prompt: "Use $export-flomo-to-obsidian to convert this Flomo export zip into Obsidian notes grouped by YYYY-MM-DD folders with attachments and related-note wikilinks."

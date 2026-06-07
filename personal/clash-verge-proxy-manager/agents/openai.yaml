@@ -1,0 +1,6 @@
+interface:
+  display_name: "Clash Verge Proxy Manager"
+  short_description: "Manage Clash Verge proxy rules"
+  default_prompt: "Use $clash-verge-proxy-manager to add or verify Clash Verge proxy rules."
+policy:
+  allow_implicit_invocation: true

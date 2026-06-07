@@ -44,6 +44,26 @@
   - 将 description 改为手动触发限定，避免普通功能、设计或实现请求自动加载该 skill。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
+### personal/clean-git-branches
+
+- 状态: Original
+- 启发来源:
+  - 用户对本地和远程 Git stale branches、已合并 PR 分支、缺失 tracking 分支、按保留周期清理分支的安全自动化需求。
+- 改写说明:
+  - 新建为 Codex skill，用于安全清理 Git 本地分支和远程分支。
+  - 保留 dry-run 优先、受保护分支跳过、merged PR 检测、remote-missing 检测、按月龄清理和中文交互确认。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
+### personal/clash-verge-proxy-manager
+
+- 状态: Original
+- 启发来源:
+  - 用户对 macOS Clash Verge Rev、MyProxy/MyLocal、白名单代理规则、默认 DIRECT 路由和运行时验证的维护需求。
+- 改写说明:
+  - 新建为 Codex skill，用于维护 Clash Verge Rev 的代理配置、规则插入、热重载和运行时验证。
+  - 保留 `scripts/add_rules.rb` 作为规则插入 helper，并在迁移到仓库时将本机路径改为 `$HOME` 形式、将代理凭据改为占位符。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
 ### personal/executing-plans
 
 - 状态: Forked
@@ -52,6 +72,16 @@
 - 改写说明:
   - 基本沿用原始 executing-plans skill 的计划读取、批判性审阅、任务执行、验证和阻塞时停止询问流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
+
+### personal/export-flomo-to-obsidian
+
+- 状态: Original
+- 启发来源:
+  - 用户对 Flomo 导出包迁移到 Obsidian vault 的工作流需求。
+- 改写说明:
+  - 新建为 Codex skill，用于把 Flomo zip 导出为 Obsidian Markdown notes。
+  - 保留脚本化导入、frontmatter、标签、附件、幂等 key、相关笔记 wikilink 和 vault 内文件嵌入处理。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
 ### personal/nest-best-practices
 
@@ -145,6 +175,15 @@
 - 改写说明:
   - 基于本地已整理的 test-driven-development skill 加入本仓库。
   - 保留 red-green-refactor、先写失败测试、最小实现和测试反模式检查流程。
+  - 调整为 Codex skill 目录结构和仓库归属记录。
+
+### personal/verification-before-completion
+
+- 状态: Forked
+- 启发来源:
+  - [obra/superpowers `skills/verification-before-completion/SKILL.md`](https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md)
+- 改写说明:
+  - 基本沿用原始 verification-before-completion skill 的 evidence before claims、完成前必须运行验证、读取完整输出、再声明状态的流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
 ### deep-understanding

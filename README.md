@@ -32,9 +32,21 @@ Create concise repository `AGENTS.md` guidance and `.codex/docs/architectural_pa
 
 Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos, with subtitle/ASR fallback, cover image handling, key-frame extraction, and long-video segmented writing.
 
+### personal/clean-git-branches
+
+Safely clean stale local and remote Git branches with dry-run planning, protected-branch guards, merged-PR detection, and explicit confirmation.
+
+### personal/clash-verge-proxy-manager
+
+Maintain Clash Verge Rev proxy profiles and whitelist rules with synchronized config files, safe rule insertion, hot reload, and runtime verification.
+
 ### personal/executing-plans
 
 Execute a written implementation plan with critical review, task-by-task progress, required verification, and explicit stop points for blockers.
+
+### personal/export-flomo-to-obsidian
+
+Export Flomo zip archives into Obsidian Markdown notes with frontmatter, tags, attachments, idempotent re-runs, and conservative related-note wikilinks.
 
 ### personal/nest-best-practices
 
@@ -71,6 +83,10 @@ Debug technical issues by tracing root cause before fixing symptoms. The workflo
 ### personal/test-driven-development
 
 Implement features and bug fixes through red-green-refactor. The workflow covers writing a failing test first, verifying the failure, making the smallest passing change, refactoring safely, and avoiding testing anti-patterns.
+
+### personal/verification-before-completion
+
+Require fresh verification evidence before claiming work is complete, fixed, passing, committed, or ready for review.
 
 ## Attribution
 
