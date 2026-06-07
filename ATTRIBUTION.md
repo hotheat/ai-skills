@@ -13,10 +13,12 @@
 
 ### personal/agents-md-onboard
 
-- 状态: Original
+- 状态: Inspired
 - 启发来源:
+  - [HumanLayer - Writing a good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md)
   - 用户提供的 AGENTS.md 生成规则和 progressive disclosure 要求。
 - 改写说明:
+  - 将 HumanLayer 文章中关于 `CLAUDE.md` 的代码库 onboarding、少即是多、WHAT/WHY/HOW、progressive disclosure 和文件引用原则，改写为适配 Codex 的 `AGENTS.md` 生成流程。
   - 新建为 Codex skill，用于分析仓库并生成短根 `AGENTS.md` 与 `.codex/docs/architectural_patterns.md`。
   - 约束根文档少于 150 行，使用文件行号证据，并把专项内容拆到 `.codex/docs/`。
 
