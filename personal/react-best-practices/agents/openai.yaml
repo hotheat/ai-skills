@@ -1,0 +1,4 @@
+interface:
+  display_name: "React SPA Best Practices"
+  short_description: "React SPA 结构、数据流与 UI 规范"
+  default_prompt: "Use $react-best-practices to design, refactor, or review a React SPA with feature-based structure, Tailwind-first UI, and clear data-flow boundaries."

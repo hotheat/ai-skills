@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bilibili Render PDF"
+  short_description: "Turn a Bilibili lecture into a structured LaTeX/PDF note set."
+  default_prompt: "Use $bilibili-render-pdf to turn a Bilibili video into a high-quality LaTeX course note with clear pedagogical logic, remote ASR via `.env` `ASR_SERVICE_URL` after CC subtitles when available, timestamp-safe fallback to local Whisper, dense frame inspection, and a compiled final PDF."

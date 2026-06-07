@@ -28,6 +28,18 @@ ai-skills-owner/
 
 Create concise repository `AGENTS.md` guidance and `.codex/docs/architectural_patterns.md` from observed codebase structure, commands, and recurring patterns.
 
+### personal/bilibili-render-pdf
+
+Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos, with subtitle/ASR fallback, cover image handling, key-frame extraction, and long-video segmented writing.
+
+### personal/executing-plans
+
+Execute a written implementation plan with critical review, task-by-task progress, required verification, and explicit stop points for blockers.
+
+### personal/nest-best-practices
+
+Design, refactor, and review NestJS backends with clean architecture boundaries around Controller, UseCase, Service, Port, Adapter, DI, config, async, and testing.
+
 ### personal/planner
 
 Create actionable implementation plans for complex features, architecture changes, and refactors. The workflow covers requirements analysis, architecture review, step breakdown, implementation ordering, testing strategy, risks, and success criteria.
@@ -39,6 +51,10 @@ Generate a PPTD deck from source content and a PPT/PPTX template. The workflow c
 ### personal/ppt-template-style-reflow
 
 Rebuild a content deck in the visual style of a template deck while preserving the content deck's page count and substantive content. The workflow covers PPTD conversion, template style extraction, content page classification, reflow, validation, export, and visual QA.
+
+### personal/react-best-practices
+
+Create, refactor, extend, and review React SPA frontends with feature-based structure, shared UI primitives, Tailwind-first styling, state boundaries, forms, hooks, and data-flow rules.
 
 ### personal/receiving-code-review
 

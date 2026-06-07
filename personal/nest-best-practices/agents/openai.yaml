@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nest Best Practices"
+  short_description: "NestJS clean architecture and backend boundary guidance"
+  default_prompt: "Use the Nest best practices skill to design or review a NestJS backend with Controller, UseCase, Port, Adapter, DI, config, async, and testing boundaries."

@@ -20,6 +20,18 @@
   - 新建为 Codex skill，用于分析仓库并生成短根 `AGENTS.md` 与 `.codex/docs/architectural_patterns.md`。
   - 约束根文档少于 150 行，使用文件行号证据，并把专项内容拆到 `.codex/docs/`。
 
+### personal/bilibili-render-pdf
+
+- 状态: Adapted
+- 启发来源:
+  - [wdkns/wdkns-skills `skills/bilibili-render-pdf`](https://github.com/wdkns/wdkns-skills/tree/main/skills/bilibili-render-pdf)
+- 差异化说明:
+  - 在上游 Bilibili 课程笔记和 PDF 生成流程基础上，加入 remote ASR 优先级：CC 字幕后先尝试 `.env` 中的 `ASR_SERVICE_URL`，再回退到本地 Whisper，最后进入 visual-only 模式。
+  - 增加 `scripts/transcribe_audio.py`，封装 remote SRT、remote JSON segments 转 SRT、本地 Whisper fallback 和 ASR 结果元数据输出。
+  - 增加按 BV 号创建隔离工作目录的强制流程，避免多视频并发时覆盖 `audio.wav`、字幕、frames、`notes.tex` 或 PDF 产物。
+  - 强化长视频处理为 outline + 1-2 个分P或 15-20 分钟窗口的分段写作流程，并要求整合时去重、补过渡和统一最终叙事。
+  - 保留并本地化 `assets/notes-template.tex`，要求封面图、关键帧、教学框、总结与延伸共同进入最终可编译 PDF。
+
 ### personal/brainstorming
 
 - 状态: Forked
@@ -29,6 +41,26 @@
   - 基本沿用原始 brainstorming skill 的协作式需求澄清、设计确认和 spec 产出流程。
   - 将 description 改为手动触发限定，避免普通功能、设计或实现请求自动加载该 skill。
   - 调整为 Codex skill 目录结构和仓库归属记录。
+
+### personal/executing-plans
+
+- 状态: Forked
+- 启发来源:
+  - [obra/superpowers `skills/executing-plans/SKILL.md`](https://github.com/obra/superpowers/blob/main/skills/executing-plans/SKILL.md?plain=1)
+- 改写说明:
+  - 基本沿用原始 executing-plans skill 的计划读取、批判性审阅、任务执行、验证和阻塞时停止询问流程。
+  - 调整为 Codex skill 目录结构和仓库归属记录。
+
+### personal/nest-best-practices
+
+- 状态: Inspired
+- 启发来源:
+  - 用户确认的 Nest clean architecture 原则：UseCase、Service、Port、Adapter、Controller、DI token、composition root、runtime config 和边界测试。
+  - 本地 `react-best-practices` skill 的 progressive disclosure 结构。
+- 改写说明:
+  - 新建为 Codex skill，用于设计、重构和审查 NestJS 后端。
+  - 将规则拆成 `SKILL.md` 和 `rules/`，覆盖项目形态、UseCase/Port/Adapter、DI/config、cross-cutting/async、测试与交付。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
 ### personal/planner
 
@@ -57,6 +89,20 @@
 - 改写说明:
   - 改写为 Codex skill，用于 PPTD 转换、模板风格提取、内容 PPT 重排、验证、导出和视觉 QA。
   - 启发过程通过 Codex Computer Use 整理。
+
+### personal/react-best-practices
+
+- 状态: Inspired
+- 启发来源:
+  - [flpbalada/my-opencode-config `project-structure`](https://skills.sh/flpbalada/my-opencode-config/project-structure)
+  - [trsoliu/react-best-practices `react-best-practices`](https://skills.sh/trsoliu/react-best-practices/react-best-practices)
+  - 用户确认的对比结论：`project-structure` 更简短、更聚焦，强项是 feature-based 架构、单向依赖、文件落位决策和反模式规避；`react-best-practices` 更适合现有项目演进，覆盖 SPA 技术栈、Tailwind/Bulma 迁移、表单、数据流、测试与交付。
+  - 最终吸纳到本 skill 的内容包括：单向依赖原则、代码存放位置决策表、反模式清单、可选的 import restriction 执行建议。
+  - 项目级硬性规则需要同步写入 `AGENTS.md` 或 `CLAUDE.md`，包括 pages 薄化、feature 边界划分、禁止跨 feature 导入、禁止使用 `src/lib`、表单、Hook 和性能相关规则；ESLint import restriction 不作为默认方案，因为当前项目主 lint 基线是 Biome。
+- 改写说明:
+  - 新建为 Codex skill，用于创建、重构、扩展或审查 React SPA 前端。
+  - 将规则拆成 `SKILL.md` 和 `rules/`，覆盖技术栈选择、单应用架构、UI 系统、状态/表单/数据流、测试与交付。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
 ### personal/receiving-code-review
 
