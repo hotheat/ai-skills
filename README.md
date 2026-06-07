@@ -6,6 +6,8 @@ Personal and shared AI skill repository.
 
 ```text
 ai-skills-owner/
+├── .codex/
+├── AGENTS.md
 ├── personal/
 ├── team/
 ├── project/
@@ -18,8 +20,13 @@ ai-skills-owner/
 - `personal/`: Personal skills and workflow experiments.
 - `team/`: Team-facing skills that can be shared, recommended, or required.
 - `project/`: Project-specific skills tied to a repository, product, or delivery context.
+- `.codex/docs/`: Progressive-disclosure documentation for repo-wide patterns and specialized guidance.
 
 ## Skills
+
+### personal/agents-md-onboard
+
+Create concise repository `AGENTS.md` guidance and `.codex/docs/architectural_patterns.md` from observed codebase structure, commands, and recurring patterns.
 
 ### personal/planner
 

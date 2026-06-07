@@ -11,6 +11,25 @@
 
 ## Skills
 
+### personal/agents-md-onboard
+
+- 状态: Original
+- 启发来源:
+  - 用户提供的 AGENTS.md 生成规则和 progressive disclosure 要求。
+- 改写说明:
+  - 新建为 Codex skill，用于分析仓库并生成短根 `AGENTS.md` 与 `.codex/docs/architectural_patterns.md`。
+  - 约束根文档少于 150 行，使用文件行号证据，并把专项内容拆到 `.codex/docs/`。
+
+### personal/brainstorming
+
+- 状态: Forked
+- 启发来源:
+  - [obra/superpowers `skills/brainstorming`](https://github.com/obra/superpowers/tree/main/skills/brainstorming)
+- 改写说明:
+  - 基本沿用原始 brainstorming skill 的协作式需求澄清、设计确认和 spec 产出流程。
+  - 将 description 改为手动触发限定，避免普通功能、设计或实现请求自动加载该 skill。
+  - 调整为 Codex skill 目录结构和仓库归属记录。
+
 ### personal/planner
 
 - 状态: Inspired

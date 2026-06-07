@@ -1,0 +1,4 @@
+interface:
+  display_name: "AGENTS.md Onboard"
+  short_description: "Create concise AGENTS.md guidance"
+  default_prompt: "Use $agents-md-onboard to analyze this repository and create AGENTS.md plus .codex/docs/architectural_patterns.md."
