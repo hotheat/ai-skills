@@ -88,6 +88,7 @@
 - 状态: Inspired
 - 启发来源:
   - 用户确认的 Nest clean architecture 原则：UseCase、Service、Port、Adapter、Controller、DI token、composition root、runtime config 和边界测试。
+  - [hotheat/typescript-clean](https://github.com/hotheat/typescript-clean)
   - 本地 `react-best-practices` skill 的 progressive disclosure 结构。
 - 改写说明:
   - 新建为 Codex skill，用于设计、重构和审查 NestJS 后端。
