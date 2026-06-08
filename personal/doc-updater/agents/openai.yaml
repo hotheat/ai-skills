@@ -1,0 +1,4 @@
+interface:
+  display_name: "Doc Updater"
+  short_description: "Update docs and codemaps from code"
+  default_prompt: "Use $doc-updater to refresh repository documentation and codemaps from the current codebase."

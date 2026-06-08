@@ -36,6 +36,10 @@ Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos
 
 Safely clean stale local and remote Git branches with dry-run planning, protected-branch guards, merged-PR detection, and explicit confirmation.
 
+### personal/doc-updater
+
+Update repository documentation and codemaps from the current codebase, including READMEs, AGENTS.md, docs, docs/plans, .codex/docs, architecture docs, dependency maps, and `/update-codemaps` or `/update-docs` style refreshes.
+
 ### personal/clash-verge-proxy-manager
 
 Maintain Clash Verge Rev proxy profiles and whitelist rules with synchronized config files, safe rule insertion, hot reload, and runtime verification.

@@ -54,6 +54,19 @@
   - 保留 dry-run 优先、受保护分支跳过、merged PR 检测、remote-missing 检测、按月龄清理和中文交互确认。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
+### personal/doc-updater
+
+- 状态: Adapted
+- 启发来源:
+  - [affaan-m/ECC `agents/doc-updater.md`](https://github.com/affaan-m/ECC/blob/main/agents/doc-updater.md)
+  - `/Users/jiaoguo/github/agent-server/.claude/agents/doc-updater.md`
+  - `/Users/jiaoguo/github/agent-server/.codex/agents/doc-updater.toml`
+- 改写说明:
+  - 以 ECC 原始 `doc-updater` agent 的文档与 codemap 更新职责为基底，改写为 Codex skill。
+  - 去掉本地 `agent-server` 版本中的 Python/FastAPI/LangGraph/Temporal 技术栈假设，改为先探测仓库技术栈和文档结构。
+  - 明确优先检查 `README.md`、`AGENTS.md`、`docs/`、`docs/plans/` 和 `.codex/docs/`。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
 ### personal/clash-verge-proxy-manager
 
 - 状态: Original
