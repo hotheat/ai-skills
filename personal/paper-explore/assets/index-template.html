@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Explore</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --paper: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0, 0, 0, 0.12);
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.1);
+      --radius: 18px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.58;
+    }
+    a { color: inherit; }
+    .katex, .math-inline { white-space: nowrap; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(245, 245, 247, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .brand { font-weight: 700; margin-right: auto; }
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 76px 22px 36px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(44px, 7vw, 92px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      margin: 0 0 22px;
+    }
+    .subtitle {
+      max-width: 820px;
+      font-size: clamp(20px, 2.4vw, 30px);
+      line-height: 1.25;
+      color: var(--muted);
+      margin: 0;
+    }
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 44px 22px;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 44px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      margin: 0 0 18px;
+    }
+    h3 { margin-top: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+    .span-4, .span-6, .span-8, .span-12 {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+    .muted { color: var(--muted); }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.72);
+    }
+    .math-block {
+      overflow-x: auto;
+      padding: 18px;
+      border-radius: 12px;
+      background: #f7f8fa;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .math-block .katex { color: var(--text); }
+    .band .math-block,
+    .dark .math-block,
+    .hero-dark .math-block,
+    .callout-dark .math-block {
+      background: #fff;
+      color: #1d1d1f;
+    }
+    .band .math-block .katex,
+    .dark .math-block .katex,
+    .hero-dark .math-block .katex,
+    .callout-dark .math-block .katex {
+      color: #1d1d1f;
+    }
+    .verdict-board {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .verdict-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .verdict-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+    }
+    .pipeline-step {
+      min-width: 120px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: var(--paper);
+    }
+    figure {
+      margin: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fff;
+    }
+    figcaption {
+      padding: 14px 18px 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 650; }
+    .copy-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(29, 29, 31, 0.92);
+      color: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+      z-index: 40;
+      font-size: 14px;
+    }
+    .copy-toast.show { opacity: 1; }
+    @media (max-width: 760px) {
+      .span-4, .span-6, .span-8 { grid-column: span 12; }
+      .hero { padding-top: 54px; }
+      .nav-inner { padding-inline: 14px; }
+      .verdict-board { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body data-paper-type="method">
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Paper Explore</div>
+      <a href="#motivation">动机</a>
+      <a href="#method">方法</a>
+      <a href="#algorithm">算法</a>
+      <a href="#experiments">实验</a>
+      <a href="#critique">锐评</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">arXiv / Venue / Year</div>
+    <h1>Paper Title</h1>
+    <p class="subtitle">一句话说明论文真正解决了什么，以及最需要警惕的边界。</p>
+    <div class="verdict-board" id="verdict">
+      <div class="verdict-item"><span class="verdict-label">Verdict</span><strong>填入核心判断。</strong></div>
+      <div class="verdict-item"><span class="verdict-label">Evidence</span><strong>填入最强证据。</strong></div>
+      <div class="verdict-item"><span class="verdict-label">Confidence</span><strong>High / Medium / Low。</strong></div>
+      <div class="verdict-item"><span class="verdict-label">Caveat</span><strong>填入最大边界。</strong></div>
+      <div class="verdict-item"><span class="verdict-label">Action</span><strong>填入读者行动。</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="tldr">
+      <div class="grid">
+        <div class="span-4"><span class="tag">Problem</span><h3>问题</h3><p>填入核心问题。</p></div>
+        <div class="span-4"><span class="tag">Idea</span><h3>方法</h3><p>填入核心机制。</p></div>
+        <div class="span-4"><span class="tag">Evidence</span><h3>证据</h3><p>填入关键结果和限制。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="motivation">
+      <div class="panel">
+        <h2>研究动机</h2>
+        <p>填入动机、缺口、significance。</p>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="panel">
+        <h2>数学表示及建模</h2>
+        <p>示例行内公式 <span class="math-inline" data-latex="x_i">\(x_i\)</span>。</p>
+        <div class="math-block" data-latex="\\mathcal{L}(\\theta)=\\mathbb{E}_{(x,y)\\sim\\mathcal{D}}[-\\log p_\\theta(y\\mid x)]">
+          \[\mathcal{L}(\theta)=\mathbb{E}_{(x,y)\sim\mathcal{D}}[-\log p_\theta(y\mid x)]\]
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="algorithm">
+      <div class="panel">
+        <h2>算法流程</h2>
+        <ol>
+          <li>输入数据、模型、超参数。</li>
+          <li>计算目标或中间状态。</li>
+          <li>更新状态并输出结果。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="experiments">
+      <div class="panel">
+        <h2>实验设计与结果</h2>
+        <table>
+          <thead><tr><th>Claim</th><th>Dataset</th><th>Baseline</th><th>Metric</th><th>Evidence</th></tr></thead>
+          <tbody><tr><td>填入</td><td>填入</td><td>填入</td><td>填入</td><td>填入</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="critique">
+      <div class="panel">
+        <h2>Reviewer Critique</h2>
+        <p>填入优势、不足、威胁和改进实验。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="copy-toast" id="copyToast">LaTeX 已复制</div>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "$", right: "$", display: false }
+        ],
+        throwOnError: false
+      });
+
+      const toast = document.getElementById("copyToast");
+      const showToast = () => {
+        toast.classList.add("show");
+        window.setTimeout(() => toast.classList.remove("show"), 1100);
+      };
+
+      document.addEventListener("contextmenu", async (event) => {
+        const math = event.target.closest("[data-latex]");
+        if (!math) return;
+        event.preventDefault();
+        await navigator.clipboard.writeText(math.dataset.latex || math.textContent.trim());
+        showToast();
+      });
+    });
+  </script>
+</body>
+</html>

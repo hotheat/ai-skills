@@ -28,6 +28,10 @@ ai-skills-owner/
 
 Create concise repository `AGENTS.md` guidance and `.codex/docs/architectural_patterns.md` from observed codebase structure, commands, and recurring patterns.
 
+### personal/baoyu-design
+
+Create polished self-contained HTML design artifacts, prototypes, wireframes, app screens, dashboards, landing pages, decks, and reusable design systems across portable agent harnesses.
+
 ### personal/bilibili-render-pdf
 
 Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos, with subtitle/ASR fallback, cover image handling, key-frame extraction, and long-video segmented writing.
@@ -55,6 +59,10 @@ Export Flomo zip archives into Obsidian Markdown notes with frontmatter, tags, a
 ### personal/nest-best-practices
 
 Design, refactor, and review NestJS backends with clean architecture boundaries around Controller, UseCase, Service, Port, Adapter, DI, config, async, and testing.
+
+### personal/paper-explore
+
+Turn academic papers, arXiv IDs, PDFs, DOIs, and paper URLs into polished Chinese interactive `index.html` pages with figures, formulas, experiment analysis, reproducibility notes, and critique.
 
 ### personal/planner
 

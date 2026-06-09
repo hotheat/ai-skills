@@ -22,6 +22,17 @@
   - 新建为 Codex skill，用于分析仓库并生成短根 `AGENTS.md` 与 `.codex/docs/architectural_patterns.md`。
   - 约束根文档少于 150 行，使用文件行号证据，并把专项内容拆到 `.codex/docs/`。
 
+### personal/baoyu-design
+
+- 状态: Forked
+- 启发来源:
+  - [jimliu/baoyu-design](https://github.com/jimliu/baoyu-design)
+- 改写说明:
+  - 基本沿用上游 `baoyu-design` 的设计方法、内置设计技能、starter components、harness references 和 design-system helper scripts。
+  - 将下载目录中的内层 skill 目录移动为本仓库 `personal/baoyu-design`，避免多套一层目录。
+  - 压缩 frontmatter `description`，以符合 Codex skill 校验的长度限制；主体说明和资源保持不变。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
 ### personal/bilibili-render-pdf
 
 - 状态: Adapted
@@ -107,6 +118,17 @@
   - 新建为 Codex skill，用于设计、重构和审查 NestJS 后端。
   - 将规则拆成 `SKILL.md` 和 `rules/`，覆盖项目形态、UseCase/Port/Adapter、DI/config、cross-cutting/async、测试与交付。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
+### personal/paper-explore
+
+- 状态: Original
+- 启发来源:
+  - 用户对论文 PDF、arXiv、OpenReview、DOI 和论文 URL 的深度中文交互式解析需求。
+  - 本地 Codex skill `$HOME/.codex/skills/paper-explore`。
+- 改写说明:
+  - 将本地 `paper-explore` skill 加入本仓库 `personal/paper-explore`。
+  - 保留按论文独立目录输出、论文类型检测、mode-specific references、HTML contract、浏览器 QA 和 `scripts/validate_index.py` 静态校验流程。
+  - 导入时排除 `__pycache__` 和 `.pyc` 生成物。
 
 ### personal/planner
 

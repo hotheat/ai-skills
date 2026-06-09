@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Explore"
+  short_description: "论文深度解析、图表保留与交互式 HTML 生成工作流"
+  default_prompt: "Use $paper-explore to turn this paper PDF or arXiv ID into a single interactive index.html with Chinese analysis, formulas, figures, experiments, and reviewer critique."
