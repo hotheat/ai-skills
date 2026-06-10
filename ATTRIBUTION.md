@@ -107,6 +107,17 @@
   - 保留脚本化导入、frontmatter、标签、附件、幂等 key、相关笔记 wikilink 和 vault 内文件嵌入处理。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
+### personal/frontend-design
+
+- 状态: Adapted
+- 启发来源:
+  - [Anthropic Claude Code `frontend-design` SKILL.md](https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md)
+- 改写说明:
+  - 将本地 `/Users/jiaoguo/.claude/skills/frontend-design` 移动为本仓库 `personal/frontend-design`。
+  - 基于上游 frontend interface design 规则，改写为通用 agent design skill。
+  - 将触发条件、设计思考和质量标准扩展到 agent-facing experiences、agent tools、workflows、interfaces、deliverables、状态模型、控制恢复和输出可信度。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
 ### personal/nest-best-practices
 
 - 状态: Inspired

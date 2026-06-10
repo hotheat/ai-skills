@@ -56,6 +56,10 @@ Execute a written implementation plan with critical review, task-by-task progres
 
 Export Flomo zip archives into Obsidian Markdown notes with frontmatter, tags, attachments, idempotent re-runs, and conservative related-note wikilinks.
 
+### personal/frontend-design
+
+Design distinctive, production-grade agent-facing experiences, tools, workflows, deliverables, and interfaces with strong visual direction, clear state, and polished implementation details.
+
 ### personal/nest-best-practices
 
 Design, refactor, and review NestJS backends with clean architecture boundaries around Controller, UseCase, Service, Port, Adapter, DI, config, async, and testing.
