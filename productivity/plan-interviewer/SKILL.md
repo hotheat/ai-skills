@@ -18,7 +18,8 @@ Use this skill to turn a rough plan file into a clearer implementation spec thro
 ## Question Tool Compatibility
 
 - In Claude Code, use `AskUserQuestion` when available.
-- In Codex, use the available user-question mechanism when the current mode exposes one; otherwise ask concise Chinese questions in normal chat and wait for the answer.
+- In Codex Plan mode, use `request_user_input` when available.
+- In Codex non-Plan mode, or when no user-question tool is available, ask concise Chinese questions in normal chat, provide 2-3 options for each question, and wait for the user's answer.
 - Ask one focused batch at a time. Prefer 3-5 questions per batch unless the user explicitly asks for all 9 at once.
 
 ## Interview Rules

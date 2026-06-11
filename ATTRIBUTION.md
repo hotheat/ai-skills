@@ -187,7 +187,7 @@
 - 改写说明:
   - 将一次性的 Claude command 改写为 Codex skill，用于读取计划文件、用中文深访澄清关键问题，并把规格写回目标文件。
   - 保留“聚焦 9 个最重要问题”“问题不要显而易见”“覆盖技术实现、UI/UX、风险和取舍”等核心意图。
-  - 增加 Codex 与 Claude Code 问题工具兼容说明：Claude Code 优先 `AskUserQuestion`，Codex 按当前可用用户提问机制执行。
+  - 增加 Codex 与 Claude Code 问题工具兼容说明：Claude Code 优先 `AskUserQuestion`，Codex Plan mode 使用 `request_user_input`，Codex 非 Plan mode 或工具不可用时用普通聊天中文提问并为每题提供 2-3 个选项。
   - 调整为本仓库当前分类目录结构和归属记录。
 
 ### engineering/planner
