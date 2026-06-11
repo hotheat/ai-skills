@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub PR Review Resolver"
+  short_description: "Resolve PR reviews and CI failures"
+  default_prompt: "Use $github-pr-review-resolver to address the current GitHub PR review feedback and CI failures."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Teach"
+  short_description: "Run a stateful learning workspace with lessons and learning records"
+  default_prompt: "Use $teach to teach me a new skill or concept over multiple sessions."

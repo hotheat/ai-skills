@@ -2,6 +2,8 @@
 
 本文档记录本仓库中各个 skill 的来源、启发和改写历史。
 
+`personal/` 下按用途拆为 `engineering/`、`productivity/` 和 `personal/` 三类；下方标题使用当前落盘路径。
+
 ## 约定
 
 - `Original`: 从零创建。
@@ -11,7 +13,7 @@
 
 ## Skills
 
-### personal/agents-md-onboard
+### personal/engineering/agents-md-onboard
 
 - 状态: Inspired
 - 启发来源:
@@ -22,18 +24,18 @@
   - 新建为 Codex skill，用于分析仓库并生成短根 `AGENTS.md` 与 `.codex/docs/architectural_patterns.md`。
   - 约束根文档少于 150 行，使用文件行号证据，并把专项内容拆到 `.codex/docs/`。
 
-### personal/baoyu-design
+### personal/personal/baoyu-design
 
 - 状态: Forked
 - 启发来源:
   - [jimliu/baoyu-design](https://github.com/jimliu/baoyu-design)
 - 改写说明:
   - 基本沿用上游 `baoyu-design` 的设计方法、内置设计技能、starter components、harness references 和 design-system helper scripts。
-  - 将下载目录中的内层 skill 目录移动为本仓库 `personal/baoyu-design`，避免多套一层目录。
+  - 将下载目录中的内层 skill 目录移动为本仓库 `personal/personal/baoyu-design`，避免多套一层目录。
   - 压缩 frontmatter `description`，以符合 Codex skill 校验的长度限制；主体说明和资源保持不变。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/bilibili-render-pdf
+### personal/personal/bilibili-render-pdf
 
 - 状态: Adapted
 - 启发来源:
@@ -45,7 +47,7 @@
   - 强化长视频处理为 outline + 1-2 个分P或 15-20 分钟窗口的分段写作流程，并要求整合时去重、补过渡和统一最终叙事。
   - 保留并本地化 `assets/notes-template.tex`，要求封面图、关键帧、教学框、总结与延伸共同进入最终可编译 PDF。
 
-### personal/brainstorming
+### personal/productivity/brainstorming
 
 - 状态: Forked
 - 启发来源:
@@ -55,7 +57,7 @@
   - 将 description 改为手动触发限定，避免普通功能、设计或实现请求自动加载该 skill。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/clean-git-branches
+### personal/engineering/clean-git-branches
 
 - 状态: Original
 - 启发来源:
@@ -65,7 +67,7 @@
   - 保留 dry-run 优先、受保护分支跳过、merged PR 检测、remote-missing 检测、按月龄清理和中文交互确认。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/doc-updater
+### personal/engineering/doc-updater
 
 - 状态: Adapted
 - 启发来源:
@@ -78,7 +80,7 @@
   - 明确优先检查 `README.md`、`AGENTS.md`、`docs/`、`docs/plans/` 和 `.codex/docs/`。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/clash-verge-proxy-manager
+### personal/personal/clash-verge-proxy-manager
 
 - 状态: Original
 - 启发来源:
@@ -88,7 +90,7 @@
   - 保留 `scripts/add_rules.rb` 作为规则插入 helper，并在迁移到仓库时将本机路径改为 `$HOME` 形式、将代理凭据改为占位符。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/executing-plans
+### personal/engineering/executing-plans
 
 - 状态: Forked
 - 启发来源:
@@ -97,7 +99,7 @@
   - 基本沿用原始 executing-plans skill 的计划读取、批判性审阅、任务执行、验证和阻塞时停止询问流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/export-flomo-to-obsidian
+### personal/personal/export-flomo-to-obsidian
 
 - 状态: Original
 - 启发来源:
@@ -107,18 +109,54 @@
   - 保留脚本化导入、frontmatter、标签、附件、幂等 key、相关笔记 wikilink 和 vault 内文件嵌入处理。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/frontend-design
+### personal/engineering/frontend-design
 
 - 状态: Adapted
 - 启发来源:
   - [Anthropic Claude Code `frontend-design` SKILL.md](https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md)
 - 改写说明:
-  - 将本地 `/Users/jiaoguo/.claude/skills/frontend-design` 移动为本仓库 `personal/frontend-design`。
+  - 将本地 `/Users/jiaoguo/.claude/skills/frontend-design` 移动为本仓库 `personal/engineering/frontend-design`。
   - 基于上游 frontend interface design 规则，改写为通用 agent design skill。
   - 将触发条件、设计思考和质量标准扩展到 agent-facing experiences、agent tools、workflows、interfaces、deliverables、状态模型、控制恢复和输出可信度。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/nest-best-practices
+### personal/engineering/github-pr-review-resolver
+
+- 状态: Original
+- 启发来源:
+  - 用户提出的 GitHub PR review/CI 修复循环需求：收集 Findings、Risks、Suggested fixes，重点处理 critical 和 important，修复 CI lint/test，commit/push 后等待或触发新一轮 review，最多循环三次。
+  - 本仓库 `personal/engineering/receiving-code-review`、`personal/engineering/systematic-debugging` 和 `personal/engineering/test-driven-development` 的既有流程。
+- 改写说明:
+  - 新建为 Codex skill，用于编排 PR review feedback 与 CI failure 的端到端修复循环。
+  - 明确 suggestion 级别默认可忽略，critical/important 与 CI 失败必须评估并修复已接受项。
+  - 保留最多三轮 commit/push/recheck 的停止条件，避免无边界追逐低优先级 review。
+
+### personal/productivity/grill-me
+
+- 状态: Forked
+- 启发来源:
+  - [mattpocock/skills `skills/productivity/grill-me`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)
+- 许可证:
+  - MIT License, Copyright (c) 2026 Matt Pocock.
+- 改写说明:
+  - 基本沿用上游 `grill-me` skill 的计划/设计追问、逐分支决策树澄清和代码库探查优先流程。
+  - 扩展 frontmatter `description`，覆盖 pressure-test assumptions 等触发场景。
+  - 将上游 MIT 许可证文本保留在 `personal/productivity/grill-me/LICENSE`。
+
+### personal/engineering/grill-with-docs
+
+- 状态: Forked
+- 启发来源:
+  - [mattpocock/skills `skills/engineering/grill-with-docs`](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)
+- 许可证:
+  - MIT License, Copyright (c) 2026 Matt Pocock.
+- 改写说明:
+  - 基本沿用上游 `grill-with-docs` skill 的计划拷问、领域语言校准、`CONTEXT.md` inline 更新和 ADR 谨慎创建流程。
+  - 同步导入上游格式文件：`CONTEXT-FORMAT.md` 和 `ADR-FORMAT.md`。
+  - 扩展 frontmatter `description`，覆盖 domain glossary、architecture records、`CONTEXT.md` 和 `docs/adr` 触发场景。
+  - 将上游 MIT 许可证文本保留在 `personal/engineering/grill-with-docs/LICENSE`。
+
+### personal/engineering/nest-best-practices
 
 - 状态: Inspired
 - 启发来源:
@@ -130,18 +168,29 @@
   - 将规则拆成 `SKILL.md` 和 `rules/`，覆盖项目形态、UseCase/Port/Adapter、DI/config、cross-cutting/async、测试与交付。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/paper-explore
+### personal/personal/paper-explore
 
 - 状态: Original
 - 启发来源:
   - 用户对论文 PDF、arXiv、OpenReview、DOI 和论文 URL 的深度中文交互式解析需求。
   - 本地 Codex skill `$HOME/.codex/skills/paper-explore`。
 - 改写说明:
-  - 将本地 `paper-explore` skill 加入本仓库 `personal/paper-explore`。
+  - 将本地 `paper-explore` skill 加入本仓库 `personal/personal/paper-explore`。
   - 保留按论文独立目录输出、论文类型检测、mode-specific references、HTML contract、浏览器 QA 和 `scripts/validate_index.py` 静态校验流程。
   - 导入时排除 `__pycache__` 和 `.pyc` 生成物。
 
-### personal/planner
+### personal/productivity/plan-interviewer
+
+- 状态: Adapted
+- 启发来源:
+  - 本地 Claude command `.claude/commands/interview.md`。
+- 改写说明:
+  - 将一次性的 Claude command 改写为 Codex skill，用于读取计划文件、用中文深访澄清关键问题，并把规格写回目标文件。
+  - 保留“聚焦 9 个最重要问题”“问题不要显而易见”“覆盖技术实现、UI/UX、风险和取舍”等核心意图。
+  - 增加 Codex 与 Claude Code 问题工具兼容说明：Claude Code 优先 `AskUserQuestion`，Codex 按当前可用用户提问机制执行。
+  - 调整为本仓库 `personal/` skill 目录结构和归属记录。
+
+### personal/engineering/planner
 
 - 状态: Inspired
 - 启发来源:
@@ -151,7 +200,7 @@
   - 保留规划专家、需求分析、架构审查、阶段拆解、测试策略、风险识别和成功标准等核心工作流。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/pptd-template-pipeline
+### project/kimi-ppt/pptd-template-pipeline
 
 - 状态: Inspired
 - 启发来源:
@@ -160,7 +209,7 @@
   - 改写为 Codex skill，用于基于 PPTD 的模板解析、内容规划、幻灯片生成、检查器修复循环和最终验证。
   - 启发过程通过 Codex Computer Use 整理。
 
-### personal/ppt-template-style-reflow
+### project/kimi-ppt/ppt-template-style-reflow
 
 - 状态: Inspired
 - 启发来源:
@@ -169,7 +218,7 @@
   - 改写为 Codex skill，用于 PPTD 转换、模板风格提取、内容 PPT 重排、验证、导出和视觉 QA。
   - 启发过程通过 Codex Computer Use 整理。
 
-### personal/react-best-practices
+### personal/engineering/react-best-practices
 
 - 状态: Inspired
 - 启发来源:
@@ -183,7 +232,7 @@
   - 将规则拆成 `SKILL.md` 和 `rules/`，覆盖技术栈选择、单应用架构、UI 系统、状态/表单/数据流、测试与交付。
   - 调整为本仓库 `personal/` skill 目录结构和归属记录。
 
-### personal/receiving-code-review
+### personal/engineering/receiving-code-review
 
 - 状态: Inspired
 - 启发来源:
@@ -193,7 +242,7 @@
   - 保留“先理解、再验证、再判断是否实施”的代码审查反馈处理流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/requesting-code-review
+### personal/engineering/requesting-code-review
 
 - 状态: Inspired
 - 启发来源:
@@ -203,7 +252,7 @@
   - 保留基于 git range、审查上下文模板、严重级别分类和反馈处理的代码审查请求流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/systematic-debugging
+### personal/engineering/systematic-debugging
 
 - 状态: Inspired
 - 启发来源:
@@ -214,7 +263,20 @@
   - 排除创建日志和压力测试材料，仅保留运行 skill 所需的核心说明、参考文件和脚本。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/test-driven-development
+### personal/productivity/teach
+
+- 状态: Forked
+- 启发来源:
+  - [mattpocock/skills `skills/productivity/teach`](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach)
+- 许可证:
+  - MIT License, Copyright (c) 2026 Matt Pocock.
+- 改写说明:
+  - 基本沿用上游 `teach` skill 的 stateful teaching workspace、mission、resources、learning records、reference documents 和 HTML lesson 流程。
+  - 同步导入上游格式文件：`MISSION-FORMAT.md`、`RESOURCES-FORMAT.md`、`LEARNING-RECORD-FORMAT.md` 和 `GLOSSARY-FORMAT.md`。
+  - 移除 Codex 本地校验器不支持的上游 frontmatter 字段 `disable-model-invocation` 和 `argument-hint`，并扩展 `description` 以覆盖教学、辅导、lesson 和 learning workspace 触发场景。
+  - 将上游 MIT 许可证文本保留在 `personal/productivity/teach/LICENSE`。
+
+### personal/engineering/test-driven-development
 
 - 状态: Inspired
 - 启发来源:
@@ -224,7 +286,7 @@
   - 保留 red-green-refactor、先写失败测试、最小实现和测试反模式检查流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### personal/verification-before-completion
+### personal/engineering/verification-before-completion
 
 - 状态: Forked
 - 启发来源:
@@ -233,7 +295,7 @@
   - 基本沿用原始 verification-before-completion skill 的 evidence before claims、完成前必须运行验证、读取完整输出、再声明状态的流程。
   - 调整为 Codex skill 目录结构和仓库归属记录。
 
-### deep-understanding
+### personal/productivity/deep-understanding
 
 - 状态: Inspired
 - 启发来源:

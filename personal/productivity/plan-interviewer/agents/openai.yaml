@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Interviewer"
+  short_description: "用中文深访补全计划和规格文档"
+  default_prompt: "Use $plan-interviewer to interview me in Chinese and write the refined spec back to the target plan file."
