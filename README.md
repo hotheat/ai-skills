@@ -8,10 +8,9 @@ Personal and shared AI skill repository.
 ai-skills-owner/
 ├── .codex/
 ├── AGENTS.md
+├── engineering/
+├── productivity/
 ├── personal/
-│   ├── engineering/
-│   ├── productivity/
-│   └── personal/
 ├── team/
 ├── project/
 ├── README.md
@@ -20,9 +19,9 @@ ai-skills-owner/
 
 ## Directories
 
-- `personal/engineering/`: Engineering, codebase, review, testing, planning, and architecture skills.
-- `personal/productivity/`: Learning, thinking, interviewing, and decision-clarification skills.
-- `personal/personal/`: Personal content, local workflow, and individual productivity skills.
+- `engineering/`: Engineering, codebase, review, testing, planning, and architecture skills.
+- `productivity/`: Learning, thinking, interviewing, and decision-clarification skills.
+- `personal/`: Personal content, local workflow, and individual productivity skills.
 - `team/`: Team-facing skills that can be shared, recommended, or required.
 - `project/`: Project-specific skills tied to a repository, product, or delivery context.
 - `.codex/docs/`: Progressive-disclosure documentation for repo-wide patterns and specialized guidance.
@@ -31,107 +30,107 @@ ai-skills-owner/
 
 ### Engineering
 
-#### personal/engineering/agents-md-onboard
+#### engineering/agents-md-onboard
 
 Create concise repository `AGENTS.md` guidance and `.codex/docs/architectural_patterns.md` from observed codebase structure, commands, and recurring patterns.
 
-#### personal/engineering/clean-git-branches
+#### engineering/clean-git-branches
 
 Safely clean stale local and remote Git branches with dry-run planning, protected-branch guards, merged-PR detection, and explicit confirmation.
 
-#### personal/engineering/doc-updater
+#### engineering/doc-updater
 
 Update repository documentation and codemaps from the current codebase, including READMEs, AGENTS.md, docs, docs/plans, .codex/docs, architecture docs, dependency maps, and `/update-codemaps` or `/update-docs` style refreshes.
 
-#### personal/engineering/executing-plans
+#### engineering/executing-plans
 
 Execute a written implementation plan with critical review, task-by-task progress, required verification, and explicit stop points for blockers.
 
-#### personal/engineering/frontend-design
+#### engineering/frontend-design
 
 Design distinctive, production-grade agent-facing experiences, tools, workflows, deliverables, and interfaces with strong visual direction, clear state, and polished implementation details.
 
-#### personal/engineering/github-pr-review-resolver
+#### engineering/github-pr-review-resolver
 
 Resolve GitHub PR review and CI repair loops by evaluating findings, fixing accepted critical or important issues, committing, pushing, and rechecking up to a three-cycle limit.
 
-#### personal/engineering/grill-with-docs
+#### engineering/grill-with-docs
 
 Stress-test a plan against project language, `CONTEXT.md`, ADRs, and code, while updating glossary terms and architecture decisions as they crystallize.
 
-#### personal/engineering/nest-best-practices
+#### engineering/nest-best-practices
 
 Design, refactor, and review NestJS backends with clean architecture boundaries around Controller, UseCase, Service, Port, Adapter, DI, config, async, and testing.
 
-#### personal/engineering/planner
+#### engineering/planner
 
 Create actionable implementation plans for complex features, architecture changes, and refactors. The workflow covers requirements analysis, architecture review, step breakdown, implementation ordering, testing strategy, risks, and success criteria.
 
-#### personal/engineering/react-best-practices
+#### engineering/react-best-practices
 
 Create, refactor, extend, and review React SPA frontends with feature-based structure, shared UI primitives, Tailwind-first styling, state boundaries, forms, hooks, and data-flow rules.
 
-#### personal/engineering/receiving-code-review
+#### engineering/receiving-code-review
 
 Evaluate incoming code review feedback before implementing it. The workflow covers reading feedback, verifying it against the codebase, judging technical fit, responding with evidence, and implementing one item at a time.
 
-#### personal/engineering/requesting-code-review
+#### engineering/requesting-code-review
 
 Request focused code review before merging or after completing meaningful work. The workflow covers selecting a git range, preparing reviewer context, using the review checklist, and acting on feedback by severity.
 
-#### personal/engineering/systematic-debugging
+#### engineering/systematic-debugging
 
 Debug technical issues by tracing root cause before fixing symptoms. The workflow covers reproduction, evidence gathering, recent-change review, hypothesis testing, pattern comparison, and defense-in-depth validation.
 
-#### personal/engineering/test-driven-development
+#### engineering/test-driven-development
 
 Implement features and bug fixes through red-green-refactor. The workflow covers writing a failing test first, verifying the failure, making the smallest passing change, refactoring safely, and avoiding testing anti-patterns.
 
-#### personal/engineering/verification-before-completion
+#### engineering/verification-before-completion
 
 Require fresh verification evidence before claiming work is complete, fixed, passing, committed, or ready for review.
 
 ### Productivity
 
-#### personal/productivity/brainstorming
+#### productivity/brainstorming
 
 Collaboratively clarify ideas, explore solution directions, and produce a spec after explicit design confirmation.
 
-#### personal/productivity/deep-understanding
+#### productivity/deep-understanding
 
 Teach and test understanding incrementally with explanation levels, comprehension checks, and interactive questioning.
 
-#### personal/productivity/grill-me
+#### productivity/grill-me
 
 Pressure-test a plan or design through focused questioning, resolving decision-tree branches one at a time and checking the codebase when questions can be answered from implementation.
 
-#### personal/productivity/plan-interviewer
+#### productivity/plan-interviewer
 
 Interview the user in Chinese to turn a rough plan, spec, PRD, or design document into a clearer implementation spec and write it back to the target file.
 
-#### personal/productivity/teach
+#### productivity/teach
 
 Teach a new skill or concept over multiple sessions inside a stateful learning workspace with a mission, resources, reference documents, learning records, notes, and HTML lessons.
 
 ### Personal
 
-#### personal/personal/baoyu-design
+#### personal/baoyu-design
 
 Create polished self-contained HTML design artifacts, prototypes, wireframes, app screens, dashboards, landing pages, decks, and reusable design systems across portable agent harnesses.
 
-#### personal/personal/bilibili-render-pdf
+#### personal/bilibili-render-pdf
 
 Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos, with subtitle/ASR fallback, cover image handling, key-frame extraction, and long-video segmented writing.
 
-#### personal/personal/clash-verge-proxy-manager
+#### personal/clash-verge-proxy-manager
 
 Maintain Clash Verge Rev proxy profiles and whitelist rules with synchronized config files, safe rule insertion, hot reload, and runtime verification.
 
-#### personal/personal/export-flomo-to-obsidian
+#### personal/export-flomo-to-obsidian
 
 Export Flomo zip archives into Obsidian Markdown notes with frontmatter, tags, attachments, idempotent re-runs, and conservative related-note wikilinks.
 
-#### personal/personal/paper-explore
+#### personal/paper-explore
 
 Turn academic papers, arXiv IDs, PDFs, DOIs, and paper URLs into polished Chinese interactive `index.html` pages with figures, formulas, experiment analysis, reproducibility notes, and critique.
 
