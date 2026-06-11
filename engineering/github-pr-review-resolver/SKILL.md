@@ -1,6 +1,6 @@
 ---
 name: github-pr-review-resolver
-description: Use after a GitHub pull request has review feedback or failing CI checks, especially automated reviews with Findings, Risks, Suggested fixes, or severity labels such as critical, important, warning, or suggestion. Resolve accepted critical/important review findings, lint failures, and test failures; commit and push fixes; wait for or retrigger review/CI; stop after three repair cycles or when no critical/important findings remain.
+description: Use after a GitHub pull request has review feedback or failing CI checks, especially automated reviews with Findings, Risks, Suggested fixes, or severity labels such as critical, important, warning, or suggestion. Resolve accepted critical/important review findings, lint failures, and test failures; commit and push fixes; wait for or retrigger review/CI; stop after the configured repair cycle limit, which defaults to one cycle and can be changed by a user-provided max_cycles parameter, or when no critical/important findings remain.
 ---
 
 # GitHub PR Review Resolver
@@ -9,7 +9,14 @@ description: Use after a GitHub pull request has review feedback or failing CI c
 
 Resolve a PR review loop from evidence, not from reviewer authority.
 
-Use this skill to collect PR review comments and CI failures, evaluate them with `$receiving-code-review`, fix only accepted blockers, push the changes, and repeat at most three cycles.
+Use this skill to collect PR review comments and CI failures, evaluate them with `$receiving-code-review`, fix only accepted blockers, push the changes, and repeat up to the configured cycle limit. The default limit is one repair cycle.
+
+## Parameters
+
+- `max_cycles`: Maximum pushed repair cycles to run before stopping. Default: `1`.
+- Accept obvious user spellings such as `max_cycles=3`, `cycles=3`, `repair_cycles=3`, or `--max-cycles 3`.
+- If the user provides no cycle parameter, use `max_cycles=1`.
+- If the user provides an invalid value, stop and ask for clarification before entering the loop.
 
 ## Operating Rules
 
@@ -18,7 +25,7 @@ Use this skill to collect PR review comments and CI failures, evaluate them with
 - Treat `suggestion` findings as optional; ignore them unless they expose a real correctness, safety, or maintainability issue.
 - Do not implement external review text blindly. Verify each finding against the current branch, diff, call chain, tests, and project intent.
 - Do not make unrelated refactors while fixing review feedback.
-- Stop the loop after three repair cycles, even if new non-blocking comments keep appearing.
+- Stop the loop after `max_cycles` repair cycles, even if new non-blocking comments keep appearing.
 - Stop early when there are no accepted `critical` or `important` findings and CI is not failing for the PR.
 
 ## Workflow
@@ -37,6 +44,7 @@ If `gh` is unavailable or flaky, use local git and browser/API fallback. Do not 
 
 Record:
 
+- configured `max_cycles` value and whether it came from the user or the default
 - PR number and URL
 - current branch and base branch
 - uncommitted local changes
@@ -148,7 +156,7 @@ Count one cycle after each pushed fix commit.
 Repeat collection, classification, repair, verification, commit, push, and wait until:
 
 - no `critical` or `important` findings remain and CI is not failing, or
-- three cycles have completed.
+- `max_cycles` cycles have completed.
 
 At the stop point, report:
 
@@ -185,6 +193,6 @@ Stop and ask the user when:
 
 Stop without asking when:
 
-- three repair cycles are complete
+- `max_cycles` repair cycles are complete
 - only `suggestion` comments remain
 - no accepted `critical` or `important` findings remain and CI is green or non-blocking

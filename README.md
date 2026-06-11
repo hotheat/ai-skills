@@ -52,7 +52,7 @@ Design distinctive, production-grade agent-facing experiences, tools, workflows,
 
 #### engineering/github-pr-review-resolver
 
-Resolve GitHub PR review and CI repair loops by evaluating findings, fixing accepted critical or important issues, committing, pushing, and rechecking up to a three-cycle limit.
+Resolve GitHub PR review and CI repair loops by evaluating findings, fixing accepted critical or important issues, committing, pushing, and rechecking up to a configurable cycle limit that defaults to one.
 
 #### engineering/grill-with-docs
 

@@ -124,12 +124,12 @@
 
 - 状态: Original
 - 启发来源:
-  - 用户提出的 GitHub PR review/CI 修复循环需求：收集 Findings、Risks、Suggested fixes，重点处理 critical 和 important，修复 CI lint/test，commit/push 后等待或触发新一轮 review，最多循环三次。
+  - 用户提出的 GitHub PR review/CI 修复循环需求：收集 Findings、Risks、Suggested fixes，重点处理 critical 和 important，修复 CI lint/test，commit/push 后等待或触发新一轮 review。
   - 本仓库 `engineering/receiving-code-review`、`engineering/systematic-debugging` 和 `engineering/test-driven-development` 的既有流程。
 - 改写说明:
   - 新建为 Codex skill，用于编排 PR review feedback 与 CI failure 的端到端修复循环。
   - 明确 suggestion 级别默认可忽略，critical/important 与 CI 失败必须评估并修复已接受项。
-  - 保留最多三轮 commit/push/recheck 的停止条件，避免无边界追逐低优先级 review。
+  - 将 repair cycle 上限改为参数化控制：默认 `max_cycles=1`，用户可通过 `max_cycles`、`cycles`、`repair_cycles` 或 `--max-cycles` 覆盖。
 
 ### productivity/grill-me
 
