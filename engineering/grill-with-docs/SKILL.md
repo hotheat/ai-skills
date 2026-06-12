@@ -7,9 +7,11 @@ description: Grilling session that challenges your plan against the existing dom
 
 Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 
-Ask the questions one at a time, waiting for feedback on each question before continuing.
+Ask at most 12 questions total, one at a time in Chinese, waiting for feedback on each question before continuing. Prioritise Critical and Important questions first; skip minor refinements if they would exceed the limit.
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
+
+After all questions have been answered and the plan decisions are clear, update the original Plan document in place. If the original Plan document path is unknown, ask for it before writing. Do not create a replacement plan unless the user explicitly asks for a new file.
 
 </what-to-do>
 
