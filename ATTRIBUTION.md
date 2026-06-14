@@ -90,6 +90,21 @@
   - 保留 `scripts/add_rules.rb` 作为规则插入 helper，并在迁移到仓库时将本机路径改为 `$HOME` 形式、将代理凭据改为占位符。
   - 调整为本仓库当前分类目录结构和归属记录。
 
+### personal/drawio-skill
+
+- 状态: Forked
+- 启发来源:
+  - [Agents365-ai/drawio-skill `skills/drawio-skill`](https://github.com/Agents365-ai/drawio-skill/tree/main/skills/drawio-skill)
+- 来源版本:
+  - `00ed825c4aec623a5838a16d1ad6b7a2c603dfa6`，上游 `main`，2026-06-04。
+- 许可证:
+  - MIT License, Copyright (c) 2026 Agents365-ai.
+- 改写说明:
+  - 基本沿用上游 `drawio-skill` 的 draw.io XML 生成、CLI 导出、自检修复、shape search、AI logo、autolayout、codebase import graph 和 style preset 流程。
+  - 将上游 `skills/drawio-skill` 目录导入为本仓库 `personal/drawio-skill`。
+  - 将上游 frontmatter 中本地校验器不支持的 `version`、`homepage`、`compatibility` 和 `platforms` 收敛到 `metadata`，并压缩 `description`。
+  - 将上游 MIT 许可证文本保留在 `personal/drawio-skill/LICENSE`。
+
 ### engineering/executing-plans
 
 - 状态: Forked
