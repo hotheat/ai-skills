@@ -38,6 +38,10 @@ Create concise repository `AGENTS.md` guidance and `.codex/docs/architectural_pa
 
 Safely clean stale local and remote Git branches with dry-run planning, protected-branch guards, merged-PR detection, and explicit confirmation.
 
+#### engineering/code-review-toolkit
+
+Review repository changes directly from local artifacts, including git diffs, specific files, commit summaries, and optional codex-cli review output.
+
 #### engineering/doc-updater
 
 Update repository documentation and codemaps from the current codebase, including READMEs, AGENTS.md, docs, docs/plans, .codex/docs, architecture docs, dependency maps, and `/update-codemaps` or `/update-docs` style refreshes.
@@ -81,6 +85,10 @@ Request focused code review before merging or after completing meaningful work. 
 #### engineering/systematic-debugging
 
 Debug technical issues by tracing root cause before fixing symptoms. The workflow covers reproduction, evidence gathering, recent-change review, hypothesis testing, pattern comparison, and defense-in-depth validation.
+
+#### engineering/techdebt
+
+Safely reduce technical debt by finding and removing dead code, unused imports, unused dependencies, duplicate implementations, obsolete files, and stale comments with risk classification and verification gates.
 
 #### engineering/test-driven-development
 

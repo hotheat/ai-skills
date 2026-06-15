@@ -67,6 +67,17 @@
   - 保留 dry-run 优先、受保护分支跳过、merged PR 检测、remote-missing 检测、按月龄清理和中文交互确认。
   - 调整为本仓库当前分类目录结构和归属记录。
 
+### engineering/code-review-toolkit
+
+- 状态: Adapted
+- 启发来源:
+  - 本地 Claude commands：`/Users/jiaoguo/.claude/commands/review-diff.md`、`/Users/jiaoguo/.claude/commands/review-commit.md` 和 `/Users/jiaoguo/.claude/commands/codex-review.md`。
+- 改写说明:
+  - 将本地 `code-review-toolkit` skill 移入本仓库 `engineering/code-review-toolkit`。
+  - 保留 diff review、files review、commit summary 和 codex-cli review 四种本地审查入口。
+  - 删除对 zen 工具和 `review-zen` 命令的依赖，改为基于 git diff、文件内容和项目 review 标准直接审查。
+  - 调整 frontmatter 为 Codex skill 校验支持的字段，并补充 `agents/openai.yaml`。
+
 ### engineering/doc-updater
 
 - 状态: Adapted
@@ -277,6 +288,18 @@
   - 保留先定位根因、再提出修复、再补防御式验证的系统调试流程。
   - 排除创建日志和压力测试材料，仅保留运行 skill 所需的核心说明、参考文件和脚本。
   - 调整为 Codex skill 目录结构和仓库归属记录。
+
+### engineering/techdebt
+
+- 状态: Adapted
+- 启发来源:
+  - 本地 Claude command `/Users/jiaoguo/.claude/commands/techdebt.md`。
+  - 本地 Claude agent `/Users/jiaoguo/.claude/agents/refactor-cleaner.md`。
+- 改写说明:
+  - 将 refactor-cleaner 的 dead code、unused imports、unused dependencies 和 duplicate cleanup 工作流改写为 Codex skill。
+  - 将原 agent 中的 Python 项目命令降级为示例，保留风险分级、动态引用检查、分批删除、验证门和删除记录要求。
+  - 明确不默认提交变更，提交行为交给用户请求和当前仓库 Git workflow 约束。
+  - 调整为本仓库当前分类目录结构和归属记录。
 
 ### productivity/teach
 

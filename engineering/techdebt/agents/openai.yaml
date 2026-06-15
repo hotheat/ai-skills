@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tech Debt Cleanup"
+  short_description: "Audit and remove dead, duplicate, unused code"
+  default_prompt: "Use $techdebt to audit and safely remove dead code, unused imports, duplicate code, or unused dependencies."
