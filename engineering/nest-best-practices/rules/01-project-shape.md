@@ -32,6 +32,7 @@ src/
   infrastructure/
     adapter/
       persistence/
+      prisma/
       model/
       queue/
       observability/
@@ -86,6 +87,8 @@ Controller
 | 业务动作实现 | `core/service/**/**Service.ts` |
 | 外部能力接口 | `core/**/port/*Port.ts` |
 | 外部能力实现 | `infrastructure/adapter/**/**Adapter.ts` |
+| Prisma schema | `prisma/schema.prisma` 或仓库既有 Prisma schema 位置 |
+| Prisma client factory / service | `infrastructure/adapter/persistence/prisma/*` 或 runtime composition root |
 | DI token | `application/di/InjectionTokens.ts` |
 | Nest provider 绑定 | `application/di/*Module.ts` |
 | runtime env/path/config | `infrastructure/config/*` 或 runtime entry |
@@ -98,11 +101,14 @@ Controller
 - 需要外部系统时先定义 port，再实现 adapter。
 - 需要跨入口复用时抽 framework-free service，不复用 Nest controller。
 - 重复编排出现两次以上再抽 factory、resolver 或 wrapper。
+- 数据库 schema 默认由 Prisma ORM + `schema.prisma` 管理；schema 修改后运行项目已有的 Prisma generate/sync 命令。
 
 ### 反模式
 
 - 把业务逻辑塞进 controller。
 - core service 使用 Nest decorator。
+- core 或 shared 直接 import `@prisma/client`。
+- 在 `schema.prisma` 之外并行维护手写 SQL schema 或 Kysely table mirror。
 - CLI 或 worker 通过 `NestFactory.createApplicationContext()` 拉完整 HTTP app。
 - DI token 放在 domain/core 目录。
 - `src/lib` 成为无法归类的兜底目录。

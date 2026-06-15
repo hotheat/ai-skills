@@ -19,6 +19,9 @@
   - 不重复测试 service 业务细节
 - Adapter tests
   - 覆盖文件、DB、HTTP、queue、model SDK 的边界行为
+- Prisma schema contract tests
+  - 读取 `schema.prisma`，覆盖关键 model、relation、索引、字段映射和禁止出现的表/列
+  - 修改 schema 后运行 Prisma format/generate/sync 命令；不要只靠 TypeScript 编译推断 schema 正确
 
 ### 最小验收
 
@@ -52,6 +55,7 @@ pnpm build
 - controller -> use case 调用链
 - service constructor dependencies
 - port 和 adapter 文件位置
+- `schema.prisma`、Prisma client factory、repository adapter 和 generate/push 命令
 - config 是否 import-time 解析
 
 重点找：
@@ -59,6 +63,8 @@ pnpm build
 - Controller 直接依赖 concrete service
 - Service 直接 import adapter
 - core 依赖 Nest decorator
+- core 或 shared 直接 import `@prisma/client`
+- `schema.prisma` 之外并行维护手写 SQL schema 或 Kysely table mirror
 - token 定义在 domain/core
 - adapter 没有实现 port
 - 空 adapter/presenter 增加层数
@@ -81,6 +87,7 @@ pnpm build
 - Controller / UseCase / Port / Adapter 链路变化
 - DI token 归属变化
 - runtime config 解析方式变化
+- Prisma schema、generated client 或数据库同步方式变化
 - queue / async task 语义变化
 - CLI、worker、HTTP 多入口复用方式变化
 - boundary tests 的规则变化

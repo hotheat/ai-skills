@@ -56,6 +56,7 @@ core 中避免：
 - `process.cwd()`
 - HTTP exception
 - DB client / SDK concrete class
+  - `@prisma/client` generated types or PrismaClient
 
 core class 应该可以在单元测试里直接 `new`。
 
@@ -75,6 +76,8 @@ core class 应该可以在单元测试里直接 `new`。
 - 不要在 core 读取 env。
 - 解析函数接受 override，方便测试。
 - module provider factory 中调用 config resolver，然后把 plain value 传给 adapter 或 service。
+- Prisma `DATABASE_URL` 解析属于 runtime 边界；PrismaClient 在 infrastructure adapter、Prisma service/factory、CLI/worker composition root 创建。
+- `schema.prisma` 是数据库 schema 的默认来源；用项目命令运行 Prisma format/generate/push，不新增并行手写 SQL migration 流程。
 
 反模式：
 
@@ -103,6 +106,7 @@ CLI -> NestFactory.createApplicationContext(RootModule)
 ```text
 CLI runtime
 -> construct core service with plain adapters
+-> create Prisma adapter/client in CLI composition root when database access is needed
 -> execute use case
 ```
 

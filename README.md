@@ -126,6 +126,10 @@ Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos
 
 Maintain Clash Verge Rev proxy profiles and whitelist rules with synchronized config files, safe rule insertion, hot reload, and runtime verification.
 
+#### personal/drawio-skill
+
+Generate draw.io diagrams from natural language or codebase structure, with bundled shape search, AI logo helpers, auto-layout, validation, and local export workflows.
+
 #### personal/export-flomo-to-obsidian
 
 Export Flomo zip archives into Obsidian Markdown notes with frontmatter, tags, attachments, idempotent re-runs, and conservative related-note wikilinks.

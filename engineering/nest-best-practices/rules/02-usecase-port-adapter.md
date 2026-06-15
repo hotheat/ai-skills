@@ -16,6 +16,7 @@
 - `Adapter`
   - Port 的具体实现。
   - 例如 file-system repository、Prisma repository、OpenAI adapter、S3 adapter、BullMQ adapter。
+  - Prisma adapter 使用 generated client 访问数据库，但只把 domain/use case 需要的结果返回给 core。
 - `Controller`
   - 协议入口。
   - 读取 params/body/query/context，构造 use case payload，调用 use case，映射 HTTP response。
@@ -105,6 +106,7 @@ CLI / worker input
   - `ConsoleLoggerAdapter`
 - 被 core use case 使用的 adapter 必须 `implements Port`。
 - Adapter 可以使用 Nest、Node、SDK、DB client、HTTP client。
+- Adapter 可以 import `@prisma/client`；core、shared、use case contract 不可以。
 - Adapter 不应反向 import core service。
 
 ### Presenter 规则
