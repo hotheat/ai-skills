@@ -1,0 +1,4 @@
+interface:
+  display_name: "Read Paper ZH"
+  short_description: "中文论文深读、证据分层、方法拆解、假设批判与研究延展报告"
+  default_prompt: "Use $read-paper-zh to read this paper deeply in Chinese and produce an evidence-grounded technical report."
