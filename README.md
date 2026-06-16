@@ -146,6 +146,10 @@ Export Flomo zip archives into Obsidian Markdown notes with frontmatter, tags, a
 
 Turn academic papers, arXiv IDs, PDFs, DOIs, and paper URLs into polished Chinese interactive `index.html` pages with figures, formulas, experiment analysis, reproducibility notes, and critique.
 
+#### personal/read-paper-zh
+
+Read academic papers in Chinese as text-first deep technical reports with author-reasoning reconstruction, evidence classification, method explanation, weakest-assumption critique, reproduction planning, counterexample design, and follow-up research ideas.
+
 ### Project
 
 #### project/kimi-ppt/pptd-template-pipeline

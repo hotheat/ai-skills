@@ -205,6 +205,16 @@
   - 保留按论文独立目录输出、论文类型检测、mode-specific references、HTML contract、浏览器 QA 和 `scripts/validate_index.py` 静态校验流程。
   - 导入时排除 `__pycache__` 和 `.pyc` 生成物。
 
+### personal/read-paper-zh
+
+- 状态: Inspired
+- 启发来源:
+  - [FeijiangHan/PaperForge `SKILL_CHN.md`](https://github.com/FeijiangHan/PaperForge/blob/main/SKILL_CHN.md)。
+- 改写说明:
+  - 新建为 Codex skill，用于中文论文深读、证据分层、方法拆解、关键假设批判、最小复现实验设计、反例设计和 follow-up research idea。
+  - 没有直接导入上游 skill 文件；按本仓库 `skill-creator` 规则重写 frontmatter、触发边界和主体流程。
+  - 明确与 `personal/paper-explore` 分工：`read-paper-zh` 输出文本报告，`paper-explore` 输出交互式 `index.html` 并执行 HTML 校验和浏览器 QA。
+
 ### productivity/plan-interviewer
 
 - 状态: Adapted
