@@ -1,6 +1,6 @@
 ---
 name: agents-md-onboard
-description: Create concise repository AGENTS.md guidance and progressive-disclosure Codex docs from an existing codebase. Use when the user asks to analyze a repo and create or refresh AGENTS.md, agent instructions, repository guidance, or .codex/docs architectural pattern documentation.
+description: Create concise repository AGENTS.md guidance and progressive-disclosure Codex docs from an existing codebase. Use when the user asks to analyze a repo and create or refresh AGENTS.md, agent instructions, skill continuous-improvement guidance, repository guidance, or .codex/docs architectural pattern documentation.
 ---
 
 # AGENTS.md Onboard
@@ -22,6 +22,7 @@ Create a short, evidence-backed `AGENTS.md` for a repository and move specialize
    - Project Overview
    - Tech Stack
    - Key Directories
+   - Skills Continuous Improvement, only when applicable
    - Essential Build/Test Commands
    - Additional Documentation
 
@@ -43,6 +44,14 @@ Create a short, evidence-backed `AGENTS.md` for a repository and move specialize
 - Use relative paths in repository guidance.
 - Preserve narrower scoped `AGENTS.md` files. Root guidance should not duplicate or override subtree-specific rules.
 
+## Skills Continuous Improvement Rules
+
+- Add this section only when the repository uses or maintains agent skills, or when the user explicitly asks for skill-update rules.
+- State the trigger: when using a skill reveals a clear workflow gap, repeated pitfall, wrong command template, validation omission, or missing context that is likely to recur in a new session, remind the user at task end and ask whether to update the corresponding skill.
+- State the action after approval: make the smallest useful update to the skill's `SKILL.md`, script, or reference file, turning the lesson into a concise rule, template, or checklist.
+- Exclude one-off incidents, current-environment-only problems, and issues already covered by general engineering judgment.
+- Require lightweight validation after a skill update, such as `quick_validate.py` for the changed skill plus `git diff --check`, and report both the change and validation result.
+
 ## Architectural Pattern Rules
 
 - Only include patterns with evidence from multiple files.
@@ -54,5 +63,6 @@ Create a short, evidence-backed `AGENTS.md` for a repository and move specialize
 
 - `AGENTS.md` is under 150 lines.
 - `AGENTS.md` references `.codex/docs/architectural_patterns.md` in `Additional Documentation`.
+- If `AGENTS.md` includes skill continuous-improvement guidance, it states the recurrence trigger, user-approval gate, minimal-update rule, exclusion boundary, and validation expectation.
 - `.codex/docs/architectural_patterns.md` exists and only documents recurring patterns.
 - `git diff --check` passes.
