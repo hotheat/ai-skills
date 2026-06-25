@@ -40,7 +40,7 @@ Safely clean stale local and remote Git branches with dry-run planning, protecte
 
 #### engineering/code-review-toolkit
 
-Review repository changes directly from local artifacts, including git diffs, specific files, commit summaries, and optional codex-cli review output.
+Review repository changes directly from local artifacts, including git diffs, specific files, commit summaries, and optional codex-cli review output, with review findings reported in Simplified Chinese by default.
 
 #### engineering/doc-updater
 
