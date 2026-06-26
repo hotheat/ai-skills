@@ -1,4 +1,4 @@
 interface:
   display_name: "Code Review Toolkit"
-  short_description: "Review diffs, files, commits, and codex-cli output"
-  default_prompt: "Use $code-review-toolkit to review the current git diff and report findings by severity."
+  short_description: "Review diffs, files, commits, and codex-cli output in Chinese"
+  default_prompt: "Use $code-review-toolkit to review the current git diff and report findings by severity in Simplified Chinese."

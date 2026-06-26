@@ -1,7 +1,7 @@
 ---
 name: code-review-toolkit
 description: |
-  Unified local code review toolkit. Use when the user wants to inspect repository changes directly: review a git diff, review specific files, summarize a commit, or invoke codex-cli review. Trigger on requests like "review diff", "review these files", "review commit", "codex review", "run code review", "check this PR diff", or comparisons against a base branch. Not for requesting external review workflows; use requesting-code-review for that.
+  Unified local code review toolkit. Use when the user wants to inspect repository changes directly: review a git diff, review specific files, summarize a commit, or invoke codex-cli review. Trigger on requests like "review diff", "review these files", "review commit", "codex review", "run code review", "check this PR diff", or comparisons against a base branch. Respond to review findings in Simplified Chinese by default. Not for requesting external review workflows; use requesting-code-review for that.
 ---
 
 # Code Review Toolkit
@@ -86,22 +86,24 @@ Apply these review standards in every mode. Prioritize findings in this order:
 
 ## Output Format
 
+Write review findings, risks, verdicts, and next steps in Simplified Chinese by default unless the user explicitly asks for another language.
+
 Use this structure unless the mode dictates otherwise:
 
 ```markdown
-## Overview
-[What was reviewed and why it matters]
+## 概览
+[审查了什么，以及它为什么重要]
 
-## Findings
-- **Critical**: [must fix — bugs, security, data loss]
-- **Important**: [should fix — architecture, missing tests, error handling]
-- **Suggestion**: [nice to have — clarity, minor optimization]
+## 发现
+- **Critical**: [必须修复：缺陷、安全问题、数据丢失风险]
+- **Important**: [应该修复：架构、缺失测试、错误处理]
+- **Suggestion**: [可选优化：清晰度、小幅优化]
 
-## Risks
-[Residual risks, plan mismatches, testing gaps]
+## 风险
+[残余风险、计划偏差、测试缺口]
 
-## Verdict / Next Steps
-[Ready to commit / needs fixes / do not commit, with concrete actions]
+## 结论 / 下一步
+[可以提交 / 需要修复 / 不应提交，并给出具体动作]
 ```
 
 ## Critical Rules
