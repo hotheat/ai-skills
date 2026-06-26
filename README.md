@@ -130,6 +130,10 @@ Create polished self-contained HTML design artifacts, prototypes, wireframes, ap
 
 Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos, with subtitle/ASR fallback, cover image handling, key-frame extraction, and long-video segmented writing.
 
+#### personal/claude-design-handoff
+
+Bridge Claude Design and React repos by preparing component materials, importing design exports into `docs/design`, and guiding Codex implementation from saved artifacts.
+
 #### personal/clash-verge-proxy-manager
 
 Maintain Clash Verge Rev proxy profiles and whitelist rules with synchronized config files, safe rule insertion, hot reload, and runtime verification.
