@@ -1,4 +1,4 @@
 interface:
   display_name: "Claude Design Handoff"
   short_description: "Bridge Claude Design artifacts to React work"
-  default_prompt: "Use $claude-design-handoff to prepare React component materials for Claude Design, import a design export, or implement the saved design."
+  default_prompt: "Use $claude-design-handoff to prepare React component materials and style context for Claude Design, import a design export, or implement the saved design."

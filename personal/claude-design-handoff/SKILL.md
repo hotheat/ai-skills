@@ -16,13 +16,17 @@ docs/design/<component-name>-redesign/
   brief.md
   source.tsx
   source.png
+  rendered.html
+  context/design-system-summary.md
   design.html
   design.png
   implementation-notes.md
   claude-design-prompt.md
 ```
 
-`source.tsx` and `source.png` exist when available; use `source.<ext>` or omit the screenshot when the input differs.
+`source.tsx`, `source.png`, `rendered.html`, and `context/design-system-summary.md` exist when available. Default to TSX plus screenshots; add rendered HTML only when it clarifies actual DOM/visual structure.
+
+When a repo has a stable style summary at `docs/design/design-system-summary.md`, let `prepare` copy it into the handoff directory and mention it in the Claude Design prompt. In Claude Design, select the project Design system when one exists; the summary is the compact source-of-truth style note.
 
 ## Mode Selection
 
@@ -47,7 +51,8 @@ python personal/claude-design-handoff/scripts/prepare_design_handoff.py \
   --name character-timeline-redesign \
   --page "Character Detail" \
   --goal "Improve timeline scanning efficiency" \
-  --screenshot /path/to/current.png
+  --screenshot /path/to/current.png \
+  --rendered-html /path/to/current-dom.html
 ```
 
 The script creates:
@@ -55,10 +60,12 @@ The script creates:
 - `brief.md`: source, goal, constraints, and artifact list.
 - `source.tsx`: copied component source.
 - `source.png`: optional copied current screenshot.
+- `rendered.html`: optional copied DOM snapshot.
+- `context/design-system-summary.md`: copied automatically from repo-level `docs/design/design-system-summary.md` when present.
 - `implementation-notes.md`: Codex implementation contract.
 - `claude-design-prompt.md`: prompt to paste into Claude Design.
 
-Tell the user to upload/paste the generated prompt and artifacts into Claude Design.
+Tell the user to upload/paste the generated prompt and artifacts into Claude Design. If a Claude Design project Design system exists, tell them to select it so future handoffs do not repeat global style rules.
 
 ## Import Mode
 
@@ -96,6 +103,7 @@ Rules:
 
 - Preserve existing props, API contracts, routing, and data flow unless the user explicitly asks otherwise.
 - Prefer existing components, design tokens, Tailwind classes, and local styling conventions.
+- Follow `docs/design/design-system-summary.md` if present.
 - Do not copy Claude Design HTML directly into `src/`.
 - Do not add a new UI framework for a redesign artifact.
 - Keep the diff scoped to the requested component/page and necessary tests.

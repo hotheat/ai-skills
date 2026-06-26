@@ -9,7 +9,8 @@ import sys
 from pathlib import Path
 
 
-TEXT_EXTENSIONS = {".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".md", ".json"}
+TEXT_EXTENSIONS = {".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".md", ".json", ".html", ".htm"}
+DESIGN_SYSTEM_SUMMARY = Path("docs/design/design-system-summary.md")
 
 
 def slug_from_component(component: Path) -> str:
@@ -63,6 +64,19 @@ def copy_optional_context(repo: Path, out_dir: Path, context_files: list[str]) -
     return copied
 
 
+def copy_design_system_summary(repo: Path, out_dir: Path) -> str | None:
+    source = repo / DESIGN_SYSTEM_SUMMARY
+    if not source.exists():
+        return None
+    if not source.is_file():
+        raise SystemExit(f"design system summary is not a file: {source}")
+    context_dir = out_dir / "context"
+    context_dir.mkdir(exist_ok=True)
+    target = context_dir / "design-system-summary.md"
+    shutil.copy2(source, target)
+    return target.relative_to(out_dir).as_posix()
+
+
 def build_brief(
     *,
     component_rel: str,
@@ -71,11 +85,17 @@ def build_brief(
     out_dir_name: str,
     source_name: str,
     screenshot_name: str | None,
+    rendered_html_name: str | None,
+    design_system_summary: str | None,
     copied_context: list[str],
 ) -> str:
     artifacts = [f"- `{source_name}`: copied component source"]
     if screenshot_name:
         artifacts.append(f"- `{screenshot_name}`: current UI screenshot")
+    if rendered_html_name:
+        artifacts.append(f"- `{rendered_html_name}`: optional rendered DOM snapshot")
+    if design_system_summary:
+        artifacts.append(f"- `{design_system_summary}`: repo-level project style summary")
     artifacts.extend(
         [
             "- `claude-design-prompt.md`: prompt for Claude Design",
@@ -87,7 +107,10 @@ def build_brief(
     if copied_context:
         artifacts.append("- `context/`: copied supporting source/style files")
 
-    context_lines = "\n".join(f"- `{item}`" for item in copied_context) or "- None"
+    context_items = list(copied_context)
+    if design_system_summary:
+        context_items.insert(0, design_system_summary)
+    context_lines = "\n".join(f"- `{item}`" for item in context_items) or "- None"
     artifacts_text = "\n".join(artifacts)
 
     return f"""# {out_dir_name}
@@ -106,6 +129,7 @@ def build_brief(
 - Preserve existing props and API/data contracts.
 - Do not change backend behavior.
 - Prefer existing components, tokens, Tailwind classes, and local style conventions.
+- Follow `docs/design/design-system-summary.md` when present; in Claude Design, prefer selecting the saved project Design system instead of repeating style rules.
 - Cover desktop and mobile states when relevant.
 - Treat Claude Design HTML as reference only; do not copy it directly into `src/`.
 
@@ -130,13 +154,25 @@ def build_prompt(
     goal: str,
     source_name: str,
     screenshot_name: str | None,
+    rendered_html_name: str | None,
+    design_system_summary: str | None,
     copied_context: list[str],
 ) -> str:
     upload_lines = [f"- `{source_name}`: current React component source"]
     if screenshot_name:
         upload_lines.append(f"- `{screenshot_name}`: current UI screenshot")
+    if rendered_html_name:
+        upload_lines.append(f"- `{rendered_html_name}`: optional rendered DOM snapshot")
+    if design_system_summary:
+        upload_lines.append(f"- `{design_system_summary}`: stable repo design-system summary")
     upload_lines.extend(f"- `{item}`: supporting context" for item in copied_context)
     uploads = "\n".join(upload_lines)
+    style_instruction = (
+        "Use the selected Claude Design system for this repo. "
+        "The attached design-system-summary.md is the source-of-truth style summary."
+        if design_system_summary
+        else "Use the existing project style and component constraints implied by the source and screenshots."
+    )
 
     return f"""You are redesigning a React frontend component for a real codebase.
 
@@ -147,13 +183,16 @@ Goal: {goal or "Improve usability and visual clarity without changing business b
 Uploaded materials:
 {uploads}
 
+Style context:
+{style_instruction}
+
 Please produce a focused design fragment for this component.
 
 Requirements:
 - Preserve the existing information structure and business fields.
 - Do not invent new backend/API fields.
 - Cover desktop and mobile behavior when relevant.
-- Use the existing project style and component constraints implied by the source.
+- Follow the selected project Design system and attached style summary when provided.
 - Output a usable HTML design fragment/prototype.
 - Provide or export a PNG visual reference.
 - Include short implementation notes mapping the design back to the existing component structure.
@@ -181,6 +220,7 @@ def main() -> int:
     parser.add_argument("--name", help="Design directory name. Defaults to component-name-redesign.")
     parser.add_argument("--out-root", default="docs/design", help="Output root relative to repo.")
     parser.add_argument("--screenshot", help="Optional current UI screenshot.")
+    parser.add_argument("--rendered-html", help="Optional rendered DOM/HTML snapshot.")
     parser.add_argument("--page", default="", help="Page or feature context.")
     parser.add_argument("--goal", default="", help="Design goal.")
     parser.add_argument("--context-file", action="append", default=[], help="Supporting text source/style file. Repeatable.")
@@ -213,6 +253,17 @@ def main() -> int:
         screenshot_name = "source.png" if screenshot.suffix.lower() == ".png" else f"source{screenshot.suffix.lower()}"
         shutil.copy2(screenshot, out_dir / screenshot_name)
 
+    rendered_html_name: str | None = None
+    if args.rendered_html:
+        rendered_html = Path(args.rendered_html).expanduser().resolve()
+        if not rendered_html.exists() or not rendered_html.is_file():
+            raise SystemExit(f"rendered HTML not found: {rendered_html}")
+        if rendered_html.suffix.lower() not in {".html", ".htm"}:
+            raise SystemExit(f"rendered HTML must be .html or .htm: {rendered_html}")
+        rendered_html_name = "rendered.html"
+        shutil.copy2(rendered_html, out_dir / rendered_html_name)
+
+    design_system_summary = copy_design_system_summary(repo, out_dir)
     copied_context = copy_optional_context(repo, out_dir, args.context_file)
     component_rel = relative_to_repo(repo, component)
 
@@ -225,6 +276,8 @@ def main() -> int:
             out_dir_name=name,
             source_name=source_name,
             screenshot_name=screenshot_name,
+            rendered_html_name=rendered_html_name,
+            design_system_summary=design_system_summary,
             copied_context=copied_context,
         ),
     )
@@ -236,6 +289,8 @@ def main() -> int:
             goal=args.goal,
             source_name=source_name,
             screenshot_name=screenshot_name,
+            rendered_html_name=rendered_html_name,
+            design_system_summary=design_system_summary,
             copied_context=copied_context,
         ),
     )
