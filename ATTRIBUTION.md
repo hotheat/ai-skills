@@ -53,8 +53,8 @@
 - 启发来源:
   - 用户提出的 Claude Design 到 React 前端实现交接流程：准备组件源码和截图，保存 Claude Design HTML/PNG 产物，再由 Codex 按真实项目架构实现。
 - 改写说明:
-  - 新建为 Codex skill，用于三阶段 handoff：`prepare` 生成 Claude Design 可用材料和提示词，`import` 整理 Claude Design zip 导出，`implement` 指导 Codex 从保存的设计产物实现 React 组件。
-  - 增加 `scripts/prepare_design_handoff.py` 和 `scripts/import_claude_design_zip.py`，将重复目录创建、prompt 生成、zip 安全解压和 artifact 归档脚本化。
+  - 新建为 Codex skill，用于多阶段 handoff：`init-design-system` 准备首次项目设计系统材料，`prepare` 生成 Claude Design 可用组件材料和提示词，`import` 整理 Claude Design zip 导出，`implement` 指导 Codex 从保存的设计产物实现 React 组件。
+  - 增加 `scripts/init_design_system_handoff.py`、`scripts/prepare_design_handoff.py` 和 `scripts/import_claude_design_zip.py`，将重复目录创建、prompt 生成、zip 安全解压、风格摘要模板和 artifact 归档脚本化。
   - 明确 Claude Design HTML 只作为设计参考，不直接复制进生产 `src/`，实现阶段需保留现有 props、API contract 和数据流。
 
 ### productivity/brainstorming

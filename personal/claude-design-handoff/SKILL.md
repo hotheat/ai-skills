@@ -31,14 +31,62 @@ When a repo has a stable style summary at `docs/design/design-system-summary.md`
 ## Mode Selection
 
 - **prepare**: user gives a repo and React component path, and wants materials/prompt for Claude Design.
+- **init-design-system**: user wants first-run materials to create/update a Claude Design project Design system.
 - **import**: user gives a Claude Design exported zip and a target design directory/name.
 - **implement**: user wants Codex to implement from `design.html` / `design.png` in a React repo.
 
 If the user does not name a mode, infer it from inputs:
 
 - component path only -> prepare
+- project style or design system materials -> init-design-system
 - zip path -> import
 - existing `docs/design/...` directory -> implement
+
+## Init Design System Mode
+
+Use `scripts/init_design_system_handoff.py` for the first Claude Design style setup for a repo.
+
+```bash
+python personal/claude-design-handoff/scripts/init_design_system_handoff.py \
+  --repo /path/to/frontend-repo \
+  --global-css src/index.css \
+  --token-file src/styles/tokens.css \
+  --component src/components/ui/Button.tsx \
+  --component src/components/ui/Card.tsx \
+  --screenshot /path/to/core-page.png
+```
+
+The script creates:
+
+```text
+docs/design/design-system/
+  brief.md
+  package.json
+  tailwind.config.*
+  global-css/
+  tokens/
+  components/
+  screenshots/
+  design-system-summary.md
+  claude-design-system-prompt.md
+```
+
+It also creates or refreshes:
+
+```text
+docs/design/design-system-summary.md
+```
+
+Tell the user to paste `claude-design-system-prompt.md` into Claude Design and upload the collected materials. This mode should create/update a reusable Claude Design project Design system; it should not produce a one-off component redesign.
+
+Keep inputs representative, not exhaustive:
+
+- `package.json`
+- `tailwind.config.*`
+- global CSS
+- tokens
+- 3-8 core page or component screenshots
+- 3-8 representative TSX/components
 
 ## Prepare Mode
 
