@@ -62,6 +62,10 @@ Resolve GitHub PR review and CI repair loops by evaluating findings, fixing acce
 
 Stress-test a plan against project language, `CONTEXT.md`, ADRs, and code, while updating glossary terms and architecture decisions as they crystallize.
 
+#### engineering/improve-codebase-architecture
+
+Scan a codebase for architecture deepening opportunities, render a visual HTML report, and guide follow-up interface exploration.
+
 #### engineering/nest-best-practices
 
 Design, refactor, and review NestJS backends with clean architecture boundaries around Controller, UseCase, Service, Port, Adapter, DI, config, async, and testing.
