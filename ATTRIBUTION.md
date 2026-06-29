@@ -192,6 +192,21 @@
   - 扩展 frontmatter `description`，覆盖 domain glossary、architecture records、`CONTEXT.md` 和 `docs/adr` 触发场景。
   - 将上游 MIT 许可证文本保留在 `engineering/grill-with-docs/LICENSE`。
 
+### engineering/improve-codebase-architecture
+
+- 状态: Adapted
+- 启发来源:
+  - [mattpocock/skills `skills/engineering/improve-codebase-architecture`](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)
+- 来源版本:
+  - `5d78bd0903420f97c791f834201e550c765699f8`，上游 `main`，2026-06-25。
+- 许可证:
+  - MIT License, Copyright (c) 2026 Matt Pocock.
+- 改写说明:
+  - 基于上游 architecture review 和 visual HTML report 流程，导入为本仓库 `engineering/improve-codebase-architecture`。
+  - 移除 Codex 本地校验器不支持的上游 frontmatter 字段 `disable-model-invocation`，并扩展 `description` 以覆盖架构审查、deepening opportunity、HTML report 和 interface exploration 触发场景。
+  - 将上游依赖的 `codebase-design`、`grilling` 和 `domain-modeling` 术语与流程收敛为本 skill 内的 `LANGUAGE.md`、`DEEPENING.md` 和 `INTERFACE-DESIGN.md`，避免运行时引用缺失的外部 skill。
+  - 将上游 MIT 许可证文本保留在 `engineering/improve-codebase-architecture/LICENSE`。
+
 ### engineering/nest-best-practices
 
 - 状态: Inspired
@@ -326,6 +341,8 @@
 - 状态: Forked
 - 启发来源:
   - [mattpocock/skills `skills/productivity/teach`](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach)
+- 来源版本:
+  - `5d78bd0903420f97c791f834201e550c765699f8`，上游 `main`，2026-06-25。
 - 许可证:
   - MIT License, Copyright (c) 2026 Matt Pocock.
 - 改写说明:
