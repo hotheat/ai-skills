@@ -1,4 +1,4 @@
 interface:
   display_name: "Claude Design Handoff"
-  short_description: "Bridge Claude Design artifacts to React work"
-  default_prompt: "Use $claude-design-handoff to initialize a Claude Design system, prepare React component materials, import a design export, or implement the saved design."
+  short_description: "Package Claude Design handoffs for React work"
+  default_prompt: "使用 $claude-design-handoff 同步 Claude Design system，生成中文短设计 brief 并打包素材，导入 zip/HTML 设计导出，或实现已保存的设计。"

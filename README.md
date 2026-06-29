@@ -132,7 +132,7 @@ Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos
 
 #### personal/claude-design-handoff
 
-Bridge Claude Design and React repos by initializing project design-system handoffs, preparing component materials, importing design exports into `docs/design`, and guiding Codex implementation from saved artifacts.
+Bridge Claude Design and React repos by using `/design-sync` for design-system setup, preparing concise Chinese design briefs with packaged materials, importing zip/HTML design exports into `docs/design`, and guiding Codex implementation from saved artifacts.
 
 #### personal/clash-verge-proxy-manager
 

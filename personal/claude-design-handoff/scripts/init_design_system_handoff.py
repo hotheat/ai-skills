@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare first-run materials for a Claude Design project Design system."""
+"""Prepare local records around Claude Code /design-sync for Claude Design."""
 
 from __future__ import annotations
 
@@ -60,7 +60,7 @@ def discover_tailwind(repo: Path) -> Path | None:
 def build_summary_template() -> str:
     return """# Project Style Summary
 
-Replace or refine this template after Claude Design reviews the uploaded project materials.
+Replace or refine this template after Claude Design syncs or reviews the project materials.
 Keep it short enough to reuse in future component handoffs.
 
 - Framework: React + TypeScript.
@@ -101,7 +101,7 @@ def build_brief(
 
 ## Purpose
 
-Use these materials to create or update the Claude Design project Design system. This folder is not a component redesign artifact.
+Use these materials to document local style rules and support manual or fallback Claude Design setup. The primary Claude Design sync path is Claude Code `/design-sync`. This folder is not a component redesign artifact.
 
 ## Core Files
 
@@ -129,11 +129,48 @@ Use these materials to create or update the Claude Design project Design system.
 
 {lines(screenshots)}
 
-## Expected Output From Claude Design
+## Expected Outcome
 
-- Create or update the project Design system.
+- Sync the project Design system with Claude Code `/design-sync`, or use these materials for manual fallback setup.
 - Produce a concise 8-12 item Project Style Summary.
 - Keep the style summary usable for future `prepare` handoffs.
+"""
+
+
+def build_sync_instructions(*, repo: Path, out_dir: Path) -> str:
+    return f"""# Claude Design Sync
+
+## Primary Sync
+
+Run the actual Claude Design system sync from Claude Code:
+
+```bash
+cd {repo}
+claude
+/design-sync
+```
+
+If `/design-sync` is not available in Claude Code, run `/update`, exit, then start a new Claude Code session and retry `/design-sync`.
+
+## Local Records
+
+This directory records the local context used around the sync:
+
+- `brief.md`: source files and representative materials collected for this setup.
+- `design-system-summary.md`: style summary copy for this material bundle.
+- `claude-design-system-prompt.md`: manual fallback prompt only.
+
+After `/design-sync`, refine `docs/design/design-system-summary.md` in the repo from the synced Claude Design system. Future component handoffs can then reference the synced design system and this short summary instead of repeating global style rules.
+
+## Validate Before Use
+
+Create a small Claude Design test project that uses the synced design system. Check whether colors, typography, reusable components, spacing, and layout patterns match the source repo. If the organization setup exposes a Published toggle, publish only after the test project matches expectations.
+
+## Fallback
+
+Use `claude-design-system-prompt.md` and the collected files only when `/design-sync` is unavailable, blocked, or insufficient for the project.
+
+Generated bundle: `{relative_to_repo(repo, out_dir)}`
 """
 
 
@@ -152,7 +189,7 @@ def build_prompt(
     package_line = f"- `{copied_package}`" if copied_package else "- Not available"
     tailwind_line = f"- `{copied_tailwind}`" if copied_tailwind else "- Not available"
 
-    return f"""Create or update a Claude Design project Design system from these frontend materials.
+    return f"""Use these frontend materials to review or manually update a Claude Design project Design system when `/design-sync` is unavailable or insufficient.
 
 Uploaded materials:
 
@@ -176,7 +213,8 @@ Representative screenshots:
 
 Task:
 - Infer the project's reusable visual language, layout rules, density, typography, color usage, and state patterns.
-- Create or update the Claude Design system for this project.
+- For the main sync path, use Claude Code `/design-sync` from the design-system or component-library repo.
+- If manual fallback setup is needed, create or update the Claude Design system for this project from these materials.
 - Generate an 8-12 item Project Style Summary that future component redesigns can reuse.
 - Keep the summary concrete and implementation-aware.
 - Do not create a specific component redesign in this step.
@@ -262,15 +300,18 @@ def main() -> int:
             screenshots=screenshots,
         ),
     )
+    write_text(out_dir / "design-sync.md", build_sync_instructions(repo=repo, out_dir=out_dir))
 
     summary_path = repo / "docs/design/design-system-summary.md"
-    if not summary_path.exists() or args.force:
+    if not summary_path.exists():
         summary_path.parent.mkdir(parents=True, exist_ok=True)
         write_text(summary_path, build_summary_template())
     shutil.copy2(summary_path, out_dir / "design-system-summary.md")
 
     print(f"created {out_dir}")
-    print("next: paste claude-design-system-prompt.md into Claude Design and upload the collected materials")
+    print("next: run /design-sync in Claude Code for actual Claude Design sync")
+    print(f"sync guide: {relative_to_repo(repo, out_dir / 'design-sync.md')}")
+    print("fallback: use claude-design-system-prompt.md and collected materials for manual upload or review")
     print(f"style summary template: {relative_to_repo(repo, summary_path)}")
     return 0
 
