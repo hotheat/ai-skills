@@ -47,6 +47,16 @@
   - 强化长视频处理为 outline + 1-2 个分P或 15-20 分钟窗口的分段写作流程，并要求整合时去重、补过渡和统一最终叙事。
   - 保留并本地化 `assets/notes-template.tex`，要求封面图、关键帧、教学框、总结与延伸共同进入最终可编译 PDF。
 
+### personal/claude-design-handoff
+
+- 状态: Original
+- 启发来源:
+  - 用户提出的 Claude Design 到 React 前端实现交接流程：准备组件源码和截图，保存 Claude Design HTML/PNG 产物，再由 Codex 按真实项目架构实现。
+- 改写说明:
+  - 新建为 Codex skill，用于多阶段 handoff：Claude Design 系统同步以 Claude Code `/design-sync` 为主路径，`init-design-system` 仅准备本地风格摘要和手工 fallback 材料，`prepare` 生成 Claude Design 可用组件材料和提示词，`import` 整理 Claude Design zip/HTML 导出，`implement` 指导 Codex 从保存的设计产物实现 React 组件。
+  - 增加 `scripts/init_design_system_handoff.py`、`scripts/prepare_design_handoff.py` 和 `scripts/import_claude_design_zip.py`，将重复目录创建、中文短设计 brief 生成、素材打包、zip 安全解压、风格摘要模板和 artifact 归档脚本化。
+  - 明确 Claude Design HTML 只作为设计参考，不直接复制进生产 `src/`，实现阶段需保留现有 props、API contract 和数据流。
+
 ### productivity/brainstorming
 
 - 状态: Forked
