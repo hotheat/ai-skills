@@ -90,6 +90,10 @@ Request focused code review before merging or after completing meaningful work. 
 
 Debug technical issues by tracing root cause before fixing symptoms. The workflow covers reproduction, evidence gathering, recent-change review, hypothesis testing, pattern comparison, and defense-in-depth validation.
 
+#### engineering/tdd
+
+Drive TDD through tracer-bullet vertical slices: write one behavior test, make the smallest end-to-end path pass, then repeat through public interfaces.
+
 #### engineering/techdebt
 
 Safely reduce technical debt by finding and removing dead code, unused imports, unused dependencies, duplicate implementations, obsolete files, and stale comments with risk classification and verification gates.
@@ -97,6 +101,10 @@ Safely reduce technical debt by finding and removing dead code, unused imports, 
 #### engineering/test-driven-development
 
 Implement features and bug fixes through red-green-refactor. The workflow covers writing a failing test first, verifying the failure, making the smallest passing change, refactoring safely, and avoiding testing anti-patterns.
+
+#### engineering/to-issues
+
+Break plans, specs, PRDs, and parent issues into independently grabbable tracer-bullet issues, each a thin end-to-end slice with acceptance criteria and dependency order.
 
 #### engineering/verification-before-completion
 
@@ -133,6 +141,14 @@ Create polished self-contained HTML design artifacts, prototypes, wireframes, ap
 #### personal/bilibili-render-pdf
 
 Generate detailed Chinese LaTeX course notes and final PDFs from Bilibili videos, with subtitle/ASR fallback, cover image handling, key-frame extraction, and long-video segmented writing.
+
+#### personal/youtube-render-pdf
+
+Generate detailed Chinese LaTeX course notes and final PDFs from YouTube videos, with metadata/subtitle inspection, cover image handling, key-frame extraction, long-video segmentation, and compile verification.
+
+#### personal/tencent-render-pdf
+
+Generate detailed Chinese LaTeX course notes and final PDFs from Tencent Meeting cloud recordings, with logged-in Chrome session handling, platform transcript export, signed media download, key-frame extraction, and sensitive artifact cleanup.
 
 #### personal/claude-design-handoff
 

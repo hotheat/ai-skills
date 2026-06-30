@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tencent Render PDF"
+  short_description: "腾讯会议录制解析、逐字稿导出与 LaTeX/PDF 笔记生成"
+  default_prompt: "Use $tencent-render-pdf to turn this Tencent Meeting cloud recording URL into a structured Chinese LaTeX note with transcript, key frames, metadata, and a compiled PDF."
