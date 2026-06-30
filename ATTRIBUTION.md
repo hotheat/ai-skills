@@ -47,6 +47,32 @@
   - 强化长视频处理为 outline + 1-2 个分P或 15-20 分钟窗口的分段写作流程，并要求整合时去重、补过渡和统一最终叙事。
   - 保留并本地化 `assets/notes-template.tex`，要求封面图、关键帧、教学框、总结与延伸共同进入最终可编译 PDF。
 
+### personal/youtube-render-pdf
+
+- 状态: Forked
+- 启发来源:
+  - [wdkns/wdkns-skills `skills/youtube-render-pdf`](https://github.com/wdkns/wdkns-skills/tree/main/skills/youtube-render-pdf)
+- 来源版本: `682f6a6b375149bc85ba14bc444ed371701ba758` (`main`, 2026-06-30 抓取)
+- 改写说明:
+  - 导入上游 YouTube 课程笔记与 PDF 生成流程，保留 `SKILL.md` 和 `assets/notes-template.tex` 的核心内容。
+  - 调整为本仓库 `personal/youtube-render-pdf` 分类目录。
+  - 重新生成 `agents/openai.yaml`，确保默认提示显式引用 `$youtube-render-pdf` 并符合本仓库 skill UI 元数据约束。
+  - 将上游 GPLv3 许可证文本保留在 `personal/youtube-render-pdf/LICENSE`。
+
+### personal/tencent-render-pdf
+
+- 状态: Original
+- 启发来源:
+  - 用户基于 Tencent Meeting 云录制 `https://meeting.tencent.com/cw/...` 的两次实际解析、逐字稿分页、签名视频下载、关键帧抽取和 PDF 生成流程提出的沉淀需求。
+  - 本仓库 `personal/bilibili-render-pdf` 的 LaTeX 课程笔记结构、长视频分段写作、关键帧检查和最终 PDF 验证标准。
+  - [wdkns/wdkns-skills `skills`](https://github.com/wdkns/wdkns-skills/tree/main/skills) 中 YouTube/Bilibili render PDF 技能的分平台差异化组织方式。
+- 改写说明:
+  - 新建为 Codex skill，用于把腾讯会议云录制转换为中文 LaTeX/PDF 教学笔记。
+  - 将腾讯会议特有流程写入技能：复用已登录 Chrome 标签页、登录/权限阻断校验、`common_record_info` 元数据解析、`minutes/detail` 按 `pid` 分页导出逐字稿、`summary_note`/`query_timeline` 生成概要和时间轴。
+  - 增加签名媒体下载边界：`video_sign` 可能 403，必要时播放页面抓取实际 `media` 请求，使用 Chrome cookies、`Referer`、`Range: bytes=0-` 和 206 分片响应下载，并禁止泄露 signed URL/cookie。
+  - 增加 `scripts/extract_minutes.py` 和 `scripts/download_signed_media.py`，分别封装 Tencent minutes 导出与带 Cookie 的 signed media 下载。
+  - 复用并本地化 `assets/notes-template.tex`，要求最终交付 `notes.tex`、`notes.pdf`、关键帧、转写、元数据和敏感原始文件清理结果。
+
 ### personal/claude-design-handoff
 
 - 状态: Original
@@ -207,6 +233,37 @@
   - 将上游依赖的 `codebase-design`、`grilling` 和 `domain-modeling` 术语与流程收敛为本 skill 内的 `LANGUAGE.md`、`DEEPENING.md` 和 `INTERFACE-DESIGN.md`，避免运行时引用缺失的外部 skill。
   - 将上游 MIT 许可证文本保留在 `engineering/improve-codebase-architecture/LICENSE`。
 
+### engineering/tdd
+
+- 状态: Adapted
+- 启发来源:
+  - [mattpocock/skills `skills/engineering/tdd`](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)
+- 来源版本:
+  - `5d78bd0903420f97c791f834201e550c765699f8`，上游 `main`，2026-06-25。
+- 许可证:
+  - MIT License, Copyright (c) 2026 Matt Pocock.
+- 改写说明:
+  - 基于上游 `tdd` 的 behavior-first、integration-style tests 和 tracer-bullet vertical slices 工作流导入为本仓库 `engineering/tdd`。
+  - 同步导入上游参考文件 `tests.md`、`mocking.md` 和 `refactoring.md`，保留测试形态、mock 边界和 green 后重构候选说明。
+  - 移除上游对不存在的 `/codebase-design` command 的直接依赖，改为引用本仓库 `improve-codebase-architecture` 的模块、接口、seam、adapter、leverage、locality 词汇。
+  - 扩展 frontmatter `description`，覆盖 tracer bullets、vertical slices、red-green-refactor 和 horizontal TDD 反模式触发场景。
+  - 将上游 MIT 许可证文本保留在 `engineering/tdd/LICENSE`。
+
+### engineering/to-issues
+
+- 状态: Adapted
+- 启发来源:
+  - [mattpocock/skills `skills/engineering/to-issues`](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-issues)
+- 来源版本:
+  - `5d78bd0903420f97c791f834201e550c765699f8`，上游 `main`，2026-06-25。
+- 许可证:
+  - MIT License, Copyright (c) 2026 Matt Pocock.
+- 改写说明:
+  - 基于上游 `to-issues` 的 tracer-bullet issue decomposition 工作流导入为本仓库 `engineering/to-issues`。
+  - 移除 Codex 本地校验器不支持的上游 frontmatter 字段 `disable-model-invocation`。
+  - 移除上游对 `/setup-matt-pocock-skills` command 的依赖，改为在 issue tracker、label vocabulary 或 tracker tool 不可用时生成 Markdown issue drafts。
+  - 扩展 frontmatter `description`，覆盖 plan、spec、PRD、parent issue、tracker issues 和 integration-layer vertical slices 触发场景。
+  - 将上游 MIT 许可证文本保留在 `engineering/to-issues/LICENSE`。
 ### engineering/nest-best-practices
 
 - 状态: Inspired
