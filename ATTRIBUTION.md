@@ -264,7 +264,6 @@
   - 移除上游对 `/setup-matt-pocock-skills` command 的依赖，改为在 issue tracker、label vocabulary 或 tracker tool 不可用时生成 Markdown issue drafts。
   - 扩展 frontmatter `description`，覆盖 plan、spec、PRD、parent issue、tracker issues 和 integration-layer vertical slices 触发场景。
   - 将上游 MIT 许可证文本保留在 `engineering/to-issues/LICENSE`。
-
 ### engineering/nest-best-practices
 
 - 状态: Inspired
