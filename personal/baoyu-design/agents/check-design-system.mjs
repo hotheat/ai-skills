@@ -35,9 +35,18 @@ const {
 } = model;
 
 // --- summary line ---
-const compSeg = components.length
-  ? `Components: ${components.length} (${components.map((c) => c.name).join(', ')}).`
-  : 'Components: (none).';
+// Cap the inline inventory: a 9000-component .fig import would otherwise bury
+// the verdict in one ~150 KB line. --verbose still prints the full export map.
+const COMPONENTS_SHOWN = 40;
+const constantExports = components.filter((c) => c.kind === 'constant');
+const realComponents = components.filter((c) => c.kind !== 'constant');
+const constSeg = constantExports.length
+  ? ` (+${constantExports.length} constant export${constantExports.length === 1 ? '' : 's'}: ${constantExports.map((c) => c.name).join(', ')})`
+  : '';
+const compSeg = realComponents.length
+  ? `Components: ${realComponents.length}${constSeg} (${realComponents.slice(0, COMPONENTS_SHOWN).map((c) => c.name).join(', ')}${
+      realComponents.length > COMPONENTS_SHOWN ? `, … +${realComponents.length - COMPONENTS_SHOWN} more — full list with --verbose` : ''}).`
+  : `Components: (none)${constSeg}.`;
 
 let cardSeg;
 if (cards.length) {
