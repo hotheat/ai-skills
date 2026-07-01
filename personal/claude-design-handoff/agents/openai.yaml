@@ -1,4 +1,0 @@
-interface:
-  display_name: "Claude Design Handoff"
-  short_description: "Package Claude Design handoffs for React work"
-  default_prompt: "使用 $claude-design-handoff 同步 Claude Design system，生成中文短设计 brief 并打包素材，导入 zip/HTML 设计导出，或实现已保存的设计。"

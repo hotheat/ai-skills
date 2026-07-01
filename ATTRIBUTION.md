@@ -73,15 +73,27 @@
   - 增加 `scripts/extract_minutes.py` 和 `scripts/download_signed_media.py`，分别封装 Tencent minutes 导出与带 Cookie 的 signed media 下载。
   - 复用并本地化 `assets/notes-template.tex`，要求最终交付 `notes.tex`、`notes.pdf`、关键帧、转写、元数据和敏感原始文件清理结果。
 
-### personal/claude-design-handoff
+### personal/codex-claude-design-handoff
 
 - 状态: Original
 - 启发来源:
-  - 用户提出的 Claude Design 到 React 前端实现交接流程：准备组件源码和截图，保存 Claude Design HTML/PNG 产物，再由 Codex 按真实项目架构实现。
+  - 用户提出的 Claude Design 到 Codex React 前端实现交接流程：准备组件源码和截图，保存 Claude Design HTML/PNG 产物，再由 Codex 按真实项目架构实现。
 - 改写说明:
-  - 新建为 Codex skill，用于多阶段 handoff：Claude Design 系统同步以 Claude Code `/design-sync` 为主路径，`init-design-system` 仅准备本地风格摘要和手工 fallback 材料，`prepare` 生成 Claude Design 可用组件材料和提示词，`import` 整理 Claude Design zip/HTML 导出，`implement` 指导 Codex 从保存的设计产物实现 React 组件。
+  - 新建为 Codex skill，用于 Codex 场景下的 Claude Design handoff：Claude Code 使用 `/design-sync` 与 Project 画布 `Share` -> `Send to...` -> `Claude Code` -> `Send` 作为主路径，本 skill 负责 Codex 实现、repo 内设计产物保留和跨 repo 设计输入复现。
+  - `init-design-system` 仅准备本地风格摘要和手工 fallback 材料，`prepare` 生成 Claude Design 可用组件材料和提示词，`import` 整理 Claude Design zip/HTML 导出，`implement` 指导 Codex 从保存的设计产物实现 React 组件。
   - 增加 `scripts/init_design_system_handoff.py`、`scripts/prepare_design_handoff.py` 和 `scripts/import_claude_design_zip.py`，将重复目录创建、中文短设计 brief 生成、素材打包、zip 安全解压、风格摘要模板和 artifact 归档脚本化。
   - 明确 Claude Design HTML 只作为设计参考，不直接复制进生产 `src/`，实现阶段需保留现有 props、API contract 和数据流。
+
+### personal/claude-design-sync-contract
+
+- 状态: Original
+- 启发来源:
+  - 用户提出的 Claude Code `/design-sync` 合同治理需求：明确 design-system source-of-truth、`.design-sync` 可维护源码契约、`.ds-sync/` 本地生成目录边界，以及与 Codex handoff skill 的职责分流。
+- 改写说明:
+  - 新建为 Codex skill，用于审计或修复 React 仓库的 Claude Design `/design-sync` 合同，而不是处理 Claude Design 产物归档或 Codex 实现。
+  - 要求默认只修 `.design-sync/config.json`、`.design-sync/NOTES.md`、`.design-sync/conventions.md` 和 `.design-sync/previews/**` 这类源码合同；只有真实代码引用和现有架构边界都支持时，才修改 public barrel、组件导出或目录结构。
+  - 明确 `.ds-sync/` 保持本地生成目录语义，可由工具删除后重新生成；不能把 generated、ignored、prototype 或 deep-source 文件当长期 source of truth。
+  - 补充验证要求：基础 `git diff --check` 外，改到 TS barrel、preview import 或 package exports 时需跑 repo 可用的 typecheck/lint；环境允许时重新跑 `/design-sync` 或 preview build/smoke。
 
 ### productivity/brainstorming
 

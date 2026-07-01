@@ -1,13 +1,21 @@
 ---
-name: claude-design-handoff
-description: "Use when bridging Claude Design with a React frontend repo: guiding /design-sync or fallback design-system materials, preparing component source and prompts, importing Claude Design zip/HTML exports into docs/design, or implementing a saved artifact with Codex while preserving existing props, data flow, APIs, and project conventions."
+name: codex-claude-design-handoff
+description: "Use when Codex must implement a Claude Design result, preserve design artifacts in a repo, or reproduce design inputs across React repos after Claude Design or Claude Code handoff."
 ---
 
-# Claude Design Handoff
+# Codex Claude Design Handoff
 
 ## Purpose
 
-Turn React component context into Claude Design-ready materials, store Claude Design outputs in the frontend repo, then implement the chosen design with Codex. For Claude Design system setup, prefer Claude Code `/design-sync`; use this skill's init path only for local style-summary artifacts or manual fallback materials. Treat Claude Design HTML as design reference, not production code.
+Use this skill for Codex-side handoff work: prepare reproducible Claude Design inputs, store Claude Design outputs in the frontend repo, and implement the chosen design with Codex while preserving existing React contracts.
+
+For Claude Code, prefer the native Claude Design path:
+
+1. Sync the design system with Claude Code `/design-sync`.
+2. Design inside a Claude Design Project.
+3. From the Project canvas, use `Share` -> `Send to...` -> `Claude Code` -> `Send`.
+
+Do not use this skill as the primary Claude Code handoff path. Use it when Codex is the implementation agent, when the repo needs durable design artifacts, or when design inputs must be reproduced across repos. Treat Claude Design HTML as design reference, not production code.
 
 Canonical artifact directory:
 
@@ -49,7 +57,7 @@ If the user does not name a mode, infer it from inputs (checked in this priority
 
 ## Claude Design System Sync
 
-Use Claude Code `/design-sync` as the primary path for syncing a local component library or design-system repo into Claude Design.
+Use Claude Code `/design-sync` as the primary path for syncing a local component library or design-system repo into Claude Design. Start Claude Code from the canonical design-system or component-library source directory.
 
 ```bash
 cd /path/to/design-system-or-component-library
@@ -58,6 +66,8 @@ claude
 ```
 
 If Claude Code does not show `/design-sync`, run `/update`, then start a new Claude Code session. Do not treat `init-design-system` as a required pre-step before `/design-sync`.
+
+When a design is ready for Claude Code implementation, use the Claude Design UI path: Project canvas -> `Share` -> `Send to...` -> `Claude Code` -> `Send`.
 
 ## Claude Design Prompt Rules
 
@@ -72,7 +82,7 @@ Use these rules when creating or iterating a Claude Design artifact:
 - Keep routine implementation checks out of the Claude Design prompt by default, including responsiveness/export requirements, review-before-final checklists, and content-boundary sections.
 - Reference known design-system components by name when the repo exposes them.
 - Use Claude Design chat for structural changes, inline comments for targeted component changes, and canvas edits for quick visual adjustments.
-- For engineering handoff, prefer Claude Design "Handoff to Claude Code" or local coding-agent handoff when available. If using files, export zip or standalone HTML plus a PNG screenshot.
+- For Claude Code engineering handoff, prefer the native `Share` -> `Send to...` -> `Claude Code` path. For Codex implementation or repo archival, export zip or standalone HTML plus a PNG screenshot and import them with this skill.
 
 ## Init Design System Mode
 
@@ -85,7 +95,7 @@ Use `scripts/init_design_system_handoff.py` to prepare local records around `/de
 5. Use `claude-design-system-prompt.md` only when `/design-sync` is unavailable, blocked, or insufficient for a manual fallback.
 
 ```bash
-python personal/claude-design-handoff/scripts/init_design_system_handoff.py \
+python personal/codex-claude-design-handoff/scripts/init_design_system_handoff.py \
   --repo /path/to/frontend-repo \
   --global-css src/index.css \
   --token-file src/styles/tokens.css \
@@ -132,7 +142,7 @@ Keep inputs representative, not exhaustive:
 Use `scripts/prepare_design_handoff.py` unless the task requires custom collection.
 
 ```bash
-python personal/claude-design-handoff/scripts/prepare_design_handoff.py \
+python personal/codex-claude-design-handoff/scripts/prepare_design_handoff.py \
   --repo /path/to/frontend-repo \
   --component src/features/character/components/CharacterTimeline.tsx \
   --name character-timeline-redesign \
@@ -179,12 +189,12 @@ In Claude Design, one strong direction is enough when the user provides a clear 
 Use `scripts/import_claude_design_zip.py`.
 
 ```bash
-python personal/claude-design-handoff/scripts/import_claude_design_zip.py \
+python personal/codex-claude-design-handoff/scripts/import_claude_design_zip.py \
   --repo /path/to/frontend-repo \
   --zip ~/Downloads/claude-design-export.zip \
   --name character-timeline-redesign
 
-python personal/claude-design-handoff/scripts/import_claude_design_zip.py \
+python personal/codex-claude-design-handoff/scripts/import_claude_design_zip.py \
   --repo /path/to/frontend-repo \
   --html ~/Downloads/claude-design.html \
   --name character-timeline-redesign
@@ -199,7 +209,7 @@ The script:
 - checks all output files for conflicts before writing any, to avoid partial writes on failure;
 - creates or updates `brief.md` and `implementation-notes.md`; when no prior `prepare` step ran, creates a stub `brief.md` — pass `--component` to populate the source component path.
 
-Prefer a zip export or Claude Code/local coding-agent handoff for engineering work. Use standalone HTML when zip export is unavailable or the artifact is a single-screen prototype. If the import has no PNG or other image, ask the user to export or capture one from Claude Design and save it as `design.png`.
+Prefer native Claude Code handoff for Claude Code work. Use this import path when Codex will implement the design, when the repo needs an auditable design artifact, or when a standalone file is the only available export. Use standalone HTML when zip export is unavailable or the artifact is a single-screen prototype. If the import has no PNG or other image, ask the user to export or capture one from Claude Design and save it as `design.png`.
 
 ## Implement Mode
 
@@ -229,7 +239,7 @@ Rules:
 Suggested implementation prompt for Codex:
 
 ```text
-Use $claude-design-handoff implement with docs/design/<component-name>-redesign.
+Use $codex-claude-design-handoff implement with docs/design/<component-name>-redesign.
 Implement the saved Claude Design artifact in the real React component.
 Preserve existing props, API contract, and data flow.
 Prefer existing components, tokens, and Tailwind classes.
