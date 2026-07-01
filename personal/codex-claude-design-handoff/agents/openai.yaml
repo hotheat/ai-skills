@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Claude Design Handoff"
+  short_description: "Use Claude Design artifacts for Codex React implementation"
+  default_prompt: "使用 $codex-claude-design-handoff 为 Codex 实现 Claude Design 结果：打包设计输入，导入 zip/HTML 产物，保留 repo 内设计证据，并按真实 React 契约落地。"

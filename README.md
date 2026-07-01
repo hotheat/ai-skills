@@ -150,9 +150,13 @@ Generate detailed Chinese LaTeX course notes and final PDFs from YouTube videos,
 
 Generate detailed Chinese LaTeX course notes and final PDFs from Tencent Meeting cloud recordings, with logged-in Chrome session handling, platform transcript export, signed media download, key-frame extraction, and sensitive artifact cleanup.
 
-#### personal/claude-design-handoff
+#### personal/codex-claude-design-handoff
 
-Bridge Claude Design and React repos by using `/design-sync` for design-system setup, preparing concise Chinese design briefs with packaged materials, importing zip/HTML design exports into `docs/design`, and guiding Codex implementation from saved artifacts.
+Bridge Claude Design and Codex React implementation by packaging reproducible design inputs, importing zip/HTML design exports into `docs/design`, and preserving design artifacts for Codex implementation. Claude Code handoff should use `/design-sync` plus the Claude Design Project canvas `Share` -> `Send to...` -> `Claude Code` -> `Send` path.
+
+#### personal/claude-design-sync-contract
+
+Audit and repair Claude Code `/design-sync` contracts for React repos by keeping `.design-sync` source contracts tied to real public design-system barrels, preview imports, and generated `.ds-sync` boundaries.
 
 #### personal/clash-verge-proxy-manager
 

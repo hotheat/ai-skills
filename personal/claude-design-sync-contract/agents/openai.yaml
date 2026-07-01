@@ -1,0 +1,4 @@
+interface:
+  display_name: "Claude Design Sync Contract"
+  short_description: "Keep /design-sync contracts tied to real React DS source"
+  default_prompt: "使用 $claude-design-sync-contract 审核或修复 React 仓库的 Claude Design /design-sync 合同，限定真实 DS barrel、app/preview import、.design-sync 源码契约和 .ds-sync 生成目录边界。"
